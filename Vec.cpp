@@ -341,3 +341,24 @@ double Vec::area_of_triangle(vector<double> va,vector<double> vb,char a,char b)
 	ans=ans/2;
 	return ans;
 }
+double Vec::angle(vector<double> va,vector<double> vb,char a,char b)
+{
+	vector<vector<double>> temps;
+	double maga,magb,ans;
+	maga=magnitude_to_double(va);
+	magb=magnitude_to_double(vb);
+	if(parall(va,vb))
+	{
+		ans=0;
+	}
+	else
+	{
+		temps.push_back(va);
+		temps.push_back(vb);
+		ans=dot(temps);
+		ans/=maga;
+		ans/=magb;
+		ans=acos(ans);
+	}
+	return ans;
+}
