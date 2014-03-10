@@ -27,7 +27,7 @@ Projection of a on b (5%) --- briuin
 
 Triangle area (5%)
 
-Paraell judgement (5%)
+Paraell judgement (5%) --- xiou-hong
 
 Orthogonal judgement (5%)
 
