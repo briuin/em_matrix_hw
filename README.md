@@ -29,7 +29,7 @@ Triangle area (5%) --- briuin
 
 Paraell judgement (5%) --- xiou-hong
 
-Orthogonal judgement (5%)
+Orthogonal judgement (5%)---xiou-hong
 
 the angle between two vectors (5%)
 
