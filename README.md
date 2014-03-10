@@ -25,7 +25,7 @@ Component of a on b (5%)--- briuin
 
 Projection of a on b (5%) --- briuin
 
-Triangle area (5%)
+Triangle area (5%) --- briuin
 
 Paraell judgement (5%) --- xiou-hong
 
