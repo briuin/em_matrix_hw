@@ -310,6 +310,18 @@ bool Vec::parall(vector<double> a , vector<double> b)
  
 
 }
+bool Vec::orthogonal(vector<double>a,vector<double>b)
+{
+    vector<vector<double>> temps;
+	temps.push_back(a);
+	temps.push_back(b);
+    if(dot(temps)==0)
+		return true;
+	else
+		return false;
+
+}
+
 double Vec::area_of_parallelogram(vector<double> va,vector<double> vb,char a,char b)
 {
 	vector<double> anstemp;

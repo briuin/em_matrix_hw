@@ -37,6 +37,7 @@ public:
 	double length(vector<double> ve);
 	double dot(vector<vector<double>> ve);  //¤º¿n
 	bool  parall(vector<double>a , vector<double> b);
+	bool  orthogonal(vector<double>a,vector<double>b);
 	int i,j;
 	Vec();
 	~Vec();
