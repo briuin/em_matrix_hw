@@ -296,3 +296,17 @@ vector<double> Vec::projection(vector<double> va,vector<double> vb,char a,char b
 	return proj;
 
 }
+bool Vec::parall(vector<double> a , vector<double> b)
+{
+
+ vector<double> tempa = normal(a);
+ vector<double> tempb = normal(b);
+ if(tempa==tempb)
+ {
+  return true;
+ }
+ else
+	 return false;
+ 
+
+}

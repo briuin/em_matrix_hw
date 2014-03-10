@@ -34,6 +34,7 @@ public:
 	double length(char x); //向量長度
 	double length(vector<double> ve);
 	double dot(vector<vector<double>> ve);  //內積
+	bool  parall(vector<double>a , vector<double> b);
 	int i,j;
 	Vec();
 	~Vec();
