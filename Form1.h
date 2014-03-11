@@ -96,6 +96,11 @@ namespace Matrix_HW {
 	private: System::Windows::Forms::TextBox^  textBox9;
 	private: System::Windows::Forms::Button^  button9;
 	private: System::Windows::Forms::Button^  button10;
+	private: System::Windows::Forms::Label^  label10;
+	private: System::Windows::Forms::TextBox^  textBox10;
+	private: System::Windows::Forms::Label^  label11;
+	private: System::Windows::Forms::TextBox^  textBox11;
+	private: System::Windows::Forms::Button^  button11;
 
 
 
@@ -161,6 +166,11 @@ namespace Matrix_HW {
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
+			this->button11 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -595,11 +605,73 @@ namespace Matrix_HW {
 			this->button10->UseVisualStyleBackColor = true;
 			this->button10->Click += gcnew System::EventHandler(this, &Form1::button10_Click);
 			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(128)));
+			this->label10->Location = System::Drawing::Point(1001, 508);
+			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(175, 40);
+			this->label10->TabIndex = 45;
+			this->label10->Text = L"Plane nor";
+			this->label10->UseMnemonic = false;
+			// 
+			// textBox10
+			// 
+			this->textBox10->Location = System::Drawing::Point(1378, 520);
+			this->textBox10->Margin = System::Windows::Forms::Padding(4);
+			this->textBox10->Name = L"textBox10";
+			this->textBox10->Size = System::Drawing::Size(67, 36);
+			this->textBox10->TabIndex = 48;
+			this->textBox10->TextChanged += gcnew System::EventHandler(this, &Form1::textBox10_TextChanged);
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(128)));
+			this->label11->Location = System::Drawing::Point(1278, 516);
+			this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(76, 40);
+			this->label11->TabIndex = 47;
+			this->label11->Text = L"and";
+			this->label11->UseMnemonic = false;
+			// 
+			// textBox11
+			// 
+			this->textBox11->Location = System::Drawing::Point(1196, 516);
+			this->textBox11->Margin = System::Windows::Forms::Padding(4);
+			this->textBox11->Name = L"textBox11";
+			this->textBox11->Size = System::Drawing::Size(67, 36);
+			this->textBox11->TabIndex = 46;
+			this->textBox11->TextChanged += gcnew System::EventHandler(this, &Form1::textBox11_TextChanged);
+			// 
+			// button11
+			// 
+			this->button11->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->button11->ForeColor = System::Drawing::Color::Red;
+			this->button11->Location = System::Drawing::Point(1473, 516);
+			this->button11->Margin = System::Windows::Forms::Padding(4);
+			this->button11->Name = L"button11";
+			this->button11->Size = System::Drawing::Size(156, 44);
+			this->button11->TabIndex = 49;
+			this->button11->Text = L"caculate";
+			this->button11->UseVisualStyleBackColor = true;
+			this->button11->Click += gcnew System::EventHandler(this, &Form1::button11_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(13, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1946, 748);
+			this->Controls->Add(this->button11);
+			this->Controls->Add(this->textBox10);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->textBox11);
+			this->Controls->Add(this->label10);
 			this->Controls->Add(this->button10);
 			this->Controls->Add(this->button9);
 			this->Controls->Add(this->textBox9);
@@ -980,6 +1052,17 @@ private: System::Void button10_Click(System::Object^  sender, System::EventArgs^
 			 vector<double> tempa = vec->pop(1,a);
 			 vector<double> tempb = vec->pop(1,b);
 			total->Text=""+((vec->angle(tempa,tempb,a,b))*180/PI);
+		 }
+private: System::Void textBox11_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void textBox10_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void button11_Click(System::Object^  sender, System::EventArgs^  e) {
+			 char a =  SYS_str_to_std(textBox11->Text)[0];
+			 char b =   SYS_str_to_std(textBox10->Text)[0];
+			 vector<double> tempa = vec->pop(1,a);
+			 vector<double> tempb = vec->pop(1,b);
+			total->Text=std_to_System_string(vec->print_out(vec->plane_normal(tempa,tempb,a,b)));
 		 }
 };
 }

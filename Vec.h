@@ -32,6 +32,7 @@ public:
 	double Vec::area_of_parallelogram(vector<double> va,vector<double> vb,char a,char b); //area_of_parallelogram
 	double Vec::area_of_triangle(vector<double> va,vector<double> vb,char a,char b); //area_of_triangle
 	double Vec::angle(vector<double> va,vector<double> vb,char a,char b); //angle
+	vector<double> Vec::plane_normal(vector<double> va,vector<double> vb,char a,char b); //plane_normal
 	vector<double> pop(double a,char x);  //取出a倍向量
 	string print_out(vector<double> a);  //匯出向量成字串
 	double length(char x); //向量長度

@@ -327,7 +327,7 @@ double Vec::area_of_parallelogram(vector<double> va,vector<double> vb,char a,cha
 	vector<double> anstemp;
 	double ans;
 	anstemp=va;
-	anstemp=(1,b,anstemp);
+	anstemp=cross(1,b,anstemp);
 	ans=magnitude_to_double(anstemp);
 	return ans;
 }
@@ -336,7 +336,7 @@ double Vec::area_of_triangle(vector<double> va,vector<double> vb,char a,char b)
 	vector<double> anstemp;
 	double ans;
 	anstemp=va;
-	anstemp=(1,b,anstemp);
+	anstemp=cross(1,b,anstemp);
 	ans=magnitude_to_double(anstemp);
 	ans=ans/2;
 	return ans;
@@ -361,4 +361,12 @@ double Vec::angle(vector<double> va,vector<double> vb,char a,char b)
 		ans=acos(ans);
 	}
 	return ans;
+}
+vector<double> Vec::plane_normal(vector<double> va,vector<double> vb,char a,char b)
+{
+	vector<double> anstemp;
+	double ans;
+	anstemp=va;
+	anstemp=cross(1,b,anstemp);
+	return anstemp;
 }
