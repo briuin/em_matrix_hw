@@ -33,7 +33,7 @@ Orthogonal judgement (5%)---xiou-hong
 
 the angle between two vectors (5%) --- briuin
 
-the plane normal that is produced by two vectors (5%)
+the plane normal that is produced by two vectors (5%) --- briuin
 
 linear independent jugdement (15%)
 
