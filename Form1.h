@@ -734,6 +734,7 @@ namespace Matrix_HW {
 				 
 				 temp.clear();
 				 //將FileDialog的字串讀進來，並轉換成std::string
+
 				 std::string filename;
 				 MarshalString( openVector_FileDialog->FileName, filename );
 
@@ -743,11 +744,15 @@ namespace Matrix_HW {
 				 o_file.open( filename , std::ios::in ) ; 
 				 //用char去讀第一個字元來判斷輸入是否為一個vector
 				 int index=97;
+				 if(o_file!=NULL)
+				 {
+					 char a ;
+					 o_file >> a ;
 				 while(o_file!=NULL)
 				 {
 
-					 char a ;
-					 o_file >> a ;
+					 
+					 
 					 // v的ASCII碼為86所以直接用 是否等於86，也可以用別的寫法
 					 if(  a == 86 )  //ASCII number
 					 {
@@ -782,8 +787,9 @@ namespace Matrix_HW {
 						 temp.clear();
 
 					 }
+					 o_file >> a ;
 				 }
-
+				 }
 				
 			 }
 private: System::Void OpenVector_button_Click(System::Object^  sender, System::EventArgs^  e) {
