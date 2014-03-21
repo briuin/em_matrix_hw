@@ -15,7 +15,7 @@ Vector addition (5%) --- R-Lai
 
 Scalar Multiplication with vector (5%) ---R-Lai
 
-norm of Vector (5%)
+norm of Vector (5%) --- R-Lai
 
 Vector normalization (5%) --- xiou-hong
 
