@@ -60,6 +60,27 @@ void Vec::push(string str)
 }
 
 
+double Vec::p_norm(double a,char b)
+{
+	int index_x;
+	double x=0;
+	if(b>='a')
+		index_x=b-'a';
+	else
+		index_x=b-'A';
+
+	if(index_x<S.size())
+	{
+		for(int i=0;i<S[index_x].size();i++)
+		{
+			x+=pow(S[index_x][i],a);
+		}
+	}
+	
+	return pow(x,1/(double)a);
+
+}
+
 vector<double> Vec::add(double a,char x,double b,char y)
 {
 	vector<double> temp;

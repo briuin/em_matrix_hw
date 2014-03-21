@@ -40,6 +40,7 @@ public:
 	double dot(vector<vector<double>> ve);  //¤º¿n
 	bool  parall(vector<double>a , vector<double> b);
 	bool  orthogonal(vector<double>a,vector<double>b);
+	double p_norm(double a,char b);
 	int i,j;
 	Vec();
 	~Vec();
