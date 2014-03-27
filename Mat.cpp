@@ -139,3 +139,55 @@ vector<vector<double>> Mat::dec(double a,char x,vector<vector<double>> ve)  //´î
 
 	return temp;
 }
+
+vector<vector<double>> Mat::mul(double a,char x,vector<vector<double>> ve)  //­¼ªk
+{
+	vector<vector<double>> temp;
+	vector<vector<double>> T_mat;
+	vector<vector<double>> temp2;
+	vector<double> dot;
+	int index_x;
+	if(x>='a')
+		index_x=x-'a';
+	else
+		index_x=x-'A';
+
+
+	if ((unsigned)index_x>=M.size() || M[index_x].size()!=ve[0].size() )
+		return temp;
+	T_mat=pop(a,x);
+	T_mat=transpose(T_mat);
+
+	
+
+	for(i=0;i<ve.size();i++)
+	{
+		dot.clear();
+		for (j=0;j<T_mat.size();j++)
+		{
+			temp2.clear();
+			temp2.push_back(ve[i]);
+			temp2.push_back(T_mat[j]);
+			dot.push_back(vec->dot(temp2));
+		}
+		temp.push_back(dot);
+	}
+
+	return temp;
+}
+vector<vector<double>> Mat::transpose(vector<vector<double>> ve) //	Matrix Transpose
+{
+	vector<vector<double>> mat;
+	vector<double> temp;
+	for ( i=0;i<ve[0].size();i++)
+	{
+		temp.clear();
+		for( j=0;j<ve.size();j++)
+		{
+			temp.push_back(ve[j][i]);
+		}
+		mat.push_back(temp);
+	}
+
+	return mat;
+}

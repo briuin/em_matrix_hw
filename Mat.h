@@ -24,6 +24,8 @@ public:
 	vector<vector<double>> add(double a,char x,double b,char y);  //加法
 	vector<vector<double>> add(double a,char x,vector<vector<double>> ve);
 	vector<vector<double>> dec(double a,char x,vector<vector<double>> ve);  //減法
+	vector<vector<double>> mul(double a,char x,vector<vector<double>> ve);  //乘法
+	vector<vector<double>> transpose(vector<vector<double>> ve); //	Matrix Transpose
 
 
 

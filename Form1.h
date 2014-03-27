@@ -1205,8 +1205,8 @@ private: System::Void button20_Click(System::Object^  sender, System::EventArgs^
 							case '-':  //decrease
 									temps=mat->dec(x,cnow,temps);
 									break;
-							/*case '*': //dot
-									dot=true;
+							/*case '*': //	 Multiplication
+									
 									temp=vec->pop(x,cnow);
 									if(temps[0].size()==temp.size())
 										temps.push_back(temp);
@@ -1215,11 +1215,12 @@ private: System::Void button20_Click(System::Object^  sender, System::EventArgs^
 										total->Text=std_to_System_string("Illegal operation!");
 										return;
 									}
-									break;
-							case 'x':// 記得要宣告 cro 變數喔  俊豪這裡是外積呼叫  加上去吧
-								   cro = true;
-								   temp = vec->cross(x,cnow,temp);
-								   break;*/
+									break;*/
+							case 'x':// Matrix  Multiplication
+							case 'X':
+									
+								   temps=mat->mul(x,cnow,temps);
+								   break;
 							
 						 }
 					 ////////////
