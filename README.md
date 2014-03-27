@@ -41,15 +41,15 @@ find orthonormal basis of the basis (15%)
 
 <---Matrix--->
 
-Multiple Matrix support
+Multiple Matrix support  --R-Lai
 
-Matrix addition
+Matrix addition  --- R-Lai
 
-Matrix Multiplication
+Matrix Multiplication  --- R-Lai
 
-rank of Matrix
-
-Matrix Transpose
+rank of Matrix   
+ 
+Matrix Transpose  --- R-Lai
 
 Solve Linear System
 
