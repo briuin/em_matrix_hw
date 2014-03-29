@@ -2,10 +2,12 @@
 #include "Addedfunc.h"
 #include <math.h>
 
+
 Addedfunc::Addedfunc()
 {
-
+	addvec = new Vec();
 }
+
 
 string Addedfunc::clearallstupidinput(string s)
 {

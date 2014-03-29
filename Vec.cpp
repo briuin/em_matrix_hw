@@ -108,6 +108,27 @@ vector<double> Vec::add(double a,char x,double b,char y)
 	}
 
 }
+vector<double> Vec::addedadd(double a,char x,vector<double> ve)
+{
+	vector<double> sum;
+
+	int index;
+	if(x>='a')
+		index=x-'a';
+	else
+		index=x-'A';
+	if(S[index].size()!=ve.size()|| (unsigned)index>=S.size())
+		return sum;
+
+	for (i=0;i<ve.size();i++)
+	{
+		sum.push_back(a*S[index][i]+ve[i]);
+	}
+	return sum;
+
+
+
+}
 
 
 
