@@ -55,9 +55,9 @@ Solve Linear System
 
 Determinants of Matrix  --- R-Lai
 
-Inverse Matrix
+Inverse Matrix  --- R-Lai
 
-Adjoint Matrix
+Adjoint Matrix  --- R-Lai
 
 Eigen Vector and Eigen Value
 
