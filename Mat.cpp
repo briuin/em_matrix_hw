@@ -191,3 +191,58 @@ vector<vector<double>> Mat::transpose(vector<vector<double>> ve) //	Matrix Trans
 
 	return mat;
 }
+vector<vector<double>> Mat::gaussian_elimination(vector<vector<double>> mat)
+{
+   double temp;
+ 
+
+   for(int i=0;i<mat.size();i++)
+   {
+	    if(i<mat.size()&&i<mat[0].size())
+		{
+	   if(mat[i][i]==0)//第一列為零 與下面不為零的列做交換
+		   for(int j=i+1;j<mat.size();j++)
+			   if(mat[j][i]!=0)
+			   {
+				   for(int k=i;k<mat[0].size();k++)
+				   {
+					   temp=mat[i][k]; 
+					   mat[i][k]=mat[j][k];
+					   mat[j][k]= temp;
+			       }
+				    break;
+			   }
+			  
+			   if (mat[i][i] == 0) continue;
+    // 上方row的首項係數調整成一
+    double t = mat[i][i];
+	for (int k=i; k<mat[0].size(); k++)
+		mat[i][k] /= t;
+	for (int j=i+1; j<mat.size(); j++)
+		
+		if (mat[j][i] != 0)
+		{
+			double t = mat[j][i];
+			for (int k=i; k<mat[0].size(); k++)
+				mat[j][k] -= mat[i][k] * t;
+		}
+
+   }
+   }
+   return mat;
+}
+int Mat::rank(vector<vector<double>> mat)
+{   vector<double> zero;
+    int count=0;
+    for(int i =0;i<mat[0].size();i++)
+	{
+      zero.push_back(0);
+	}
+	mat = gaussian_elimination(mat);
+	for(int i =0;i<mat.size();i++)
+	{
+	 if(mat[0]!=zero)
+		 count++;
+	}
+	return count;
+}

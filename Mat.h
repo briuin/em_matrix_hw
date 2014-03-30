@@ -26,7 +26,8 @@ public:
 	vector<vector<double>> dec(double a,char x,vector<vector<double>> ve);  //減法
 	vector<vector<double>> mul(double a,char x,vector<vector<double>> ve);  //乘法
 	vector<vector<double>> transpose(vector<vector<double>> ve); //	Matrix Transpose
-
+	vector<vector<double>> gaussian_elimination(vector<vector<double>> mat);//高斯消去法 變列梯形
+	int rank(vector<vector<double>> mat);//廢話 當然是Rank囉
 
 
 };

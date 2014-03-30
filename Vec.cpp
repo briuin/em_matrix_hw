@@ -391,3 +391,31 @@ vector<double> Vec::plane_normal(vector<double> va,vector<double> vb,char a,char
 	anstemp=cross(1,b,anstemp);
 	return anstemp;
 }
+bool Vec::linear_indepen(vector<vector<double>> mat)
+{
+	vector<double> zero;
+	int check=0;
+	for(int i=0;i<mat[0].size();i++)
+		zero.push_back(0);
+	  
+		for(int i=0;i<mat.size();i++)
+		{
+		 for(int j=i+1;j<mat.size();j++)
+			if(mat[i]==mat[j])
+		{
+		    check=1;
+			
+		}
+		}
+
+		for(int i=0;i<mat.size();i++)
+		{
+			if(mat[i]==zero)
+				check=1;
+		}
+
+	if(check==1)
+	return  false;
+	else if(check==0)
+	return true;
+}
