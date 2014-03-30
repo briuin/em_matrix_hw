@@ -191,3 +191,48 @@ vector<vector<double>> Mat::transpose(vector<vector<double>> ve) //	Matrix Trans
 
 	return mat;
 }
+
+
+double Mat::Determinant(vector<vector<double>> ve) //Determinant
+{
+	vector<vector<double>> mat;
+	vector<double> temp;
+	double det=0;
+	if(ve.size() != ve[0].size())
+		return -9999;
+	if(ve.size()==1)
+		return ve[0][0];
+	else if(ve.size()==2)
+	{
+		return ve[0][0]*ve[1][1]-ve[0][1]*ve[1][0];
+	}
+	else 
+	{
+		
+		for(int ii=0;ii<ve.size();ii++)
+		{
+			mat.clear();
+			for(int r=0;r<ve.size();r++)
+			{
+				if(r!=ii)
+				{
+					temp.clear();
+					for (int c=1;c<ve.size();c++)
+					{
+						temp.push_back(ve[r][c]);
+					}
+					mat.push_back(temp);
+				}
+				
+			}
+			
+			det+=ve[ii][0]*pow(-1.0,ii)*Determinant(mat);
+
+		}
+		return det;
+	}
+
+
+
+
+}

@@ -7,6 +7,7 @@
 #include <string>
 #include <sstream>
 #include "Vec.h"
+#include <math.h>
 using namespace std;
 
 class Mat
@@ -26,7 +27,6 @@ public:
 	vector<vector<double>> dec(double a,char x,vector<vector<double>> ve);  //´îªk
 	vector<vector<double>> mul(double a,char x,vector<vector<double>> ve);  //­¼ªk
 	vector<vector<double>> transpose(vector<vector<double>> ve); //	Matrix Transpose
-
-
+	double Determinant(vector<vector<double>> ve);  //Determinant
 
 };

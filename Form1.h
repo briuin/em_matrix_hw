@@ -109,6 +109,11 @@ namespace Matrix_HW {
 	private: System::Windows::Forms::TextBox^  textBox10;
 	private: System::Windows::Forms::Label^  label10;
 	private: System::Windows::Forms::TextBox^  textBox11;
+	private: System::Windows::Forms::Button^  t_buttom;
+
+	private: System::Windows::Forms::TextBox^  transtbox;
+	private: System::Windows::Forms::Label^  label11;
+	private: System::Windows::Forms::Button^  button12;
 
 
 
@@ -181,9 +186,13 @@ namespace Matrix_HW {
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->t_buttom = (gcnew System::Windows::Forms::Button());
 			this->button20 = (gcnew System::Windows::Forms::Button());
+			this->transtbox = (gcnew System::Windows::Forms::TextBox());
 			this->martrix_input = (gcnew System::Windows::Forms::TextBox());
 			this->Mat_Label = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->button12 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -562,6 +571,7 @@ namespace Matrix_HW {
 			this->label8->TabIndex = 39;
 			this->label8->Text = L"Angle btw";
 			this->label8->UseMnemonic = false;
+			this->label8->Click += gcnew System::EventHandler(this, &Form1::label8_Click);
 			// 
 			// textBox8
 			// 
@@ -714,15 +724,32 @@ namespace Matrix_HW {
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->t_buttom);
+			this->groupBox3->Controls->Add(this->button12);
 			this->groupBox3->Controls->Add(this->button20);
+			this->groupBox3->Controls->Add(this->transtbox);
 			this->groupBox3->Controls->Add(this->martrix_input);
 			this->groupBox3->Controls->Add(this->Mat_Label);
+			this->groupBox3->Controls->Add(this->label11);
 			this->groupBox3->Location = System::Drawing::Point(643, 370);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(1612, 943);
 			this->groupBox3->TabIndex = 46;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"matrix";
+			// 
+			// t_buttom
+			// 
+			this->t_buttom->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->t_buttom->ForeColor = System::Drawing::Color::Red;
+			this->t_buttom->Location = System::Drawing::Point(285, 77);
+			this->t_buttom->Margin = System::Windows::Forms::Padding(2);
+			this->t_buttom->Name = L"t_buttom";
+			this->t_buttom->Size = System::Drawing::Size(96, 28);
+			this->t_buttom->TabIndex = 15;
+			this->t_buttom->Text = L"caculate";
+			this->t_buttom->UseVisualStyleBackColor = true;
+			this->t_buttom->Click += gcnew System::EventHandler(this, &Form1::transposbuttom_Click);
 			// 
 			// button20
 			// 
@@ -737,6 +764,14 @@ namespace Matrix_HW {
 			this->button20->UseVisualStyleBackColor = true;
 			this->button20->Click += gcnew System::EventHandler(this, &Form1::button20_Click);
 			// 
+			// transtbox
+			// 
+			this->transtbox->Location = System::Drawing::Point(157, 85);
+			this->transtbox->Margin = System::Windows::Forms::Padding(2);
+			this->transtbox->Name = L"transtbox";
+			this->transtbox->Size = System::Drawing::Size(116, 22);
+			this->transtbox->TabIndex = 14;
+			// 
 			// martrix_input
 			// 
 			this->martrix_input->Location = System::Drawing::Point(21, 37);
@@ -750,13 +785,41 @@ namespace Matrix_HW {
 			this->Mat_Label->AutoSize = true;
 			this->Mat_Label->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->Mat_Label->Location = System::Drawing::Point(421, 36);
+			this->Mat_Label->Location = System::Drawing::Point(402, 86);
 			this->Mat_Label->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->Mat_Label->Name = L"Mat_Label";
 			this->Mat_Label->Size = System::Drawing::Size(59, 17);
 			this->Mat_Label->TabIndex = 11;
 			this->Mat_Label->Text = L"Matrix";
 			this->Mat_Label->UseMnemonic = false;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(128)));
+			this->label11->Location = System::Drawing::Point(21, 82);
+			this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(123, 25);
+			this->label11->TabIndex = 39;
+			this->label11->Text = L"Transpose";
+			this->label11->UseMnemonic = false;
+			this->label11->Click += gcnew System::EventHandler(this, &Form1::label8_Click);
+			// 
+			// button12
+			// 
+			this->button12->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->button12->ForeColor = System::Drawing::Color::RoyalBlue;
+			this->button12->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button12->Location = System::Drawing::Point(405, 37);
+			this->button12->Margin = System::Windows::Forms::Padding(2);
+			this->button12->Name = L"button12";
+			this->button12->Size = System::Drawing::Size(138, 28);
+			this->button12->TabIndex = 15;
+			this->button12->Text = L"Determinant";
+			this->button12->UseVisualStyleBackColor = true;
+			this->button12->Click += gcnew System::EventHandler(this, &Form1::button12_Click);
 			// 
 			// Form1
 			// 
@@ -1269,6 +1332,23 @@ private: System::Void button11_Click(System::Object^  sender, System::EventArgs^
 
 			 total->Text=""+norm;
 			 
+
+		 }
+private: System::Void label8_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+
+private: System::Void transposbuttom_Click(System::Object^  sender, System::EventArgs^  e) {
+			 char b =   SYS_str_to_std(transtbox->Text)[0];
+			 vector<vector<double>> trans=mat->transpose(mat->pop(1,b));
+			 Mat_Label->Text=std_to_System_string(mat->print_out(trans));
+		 }
+private: System::Void button12_Click(System::Object^  sender, System::EventArgs^  e) {
+			 button20_Click(sender,e);
+			 double det=mat->Determinant(temps);
+			 if(det==-9999)
+				 Mat_Label->Text="Must be NxN matrix.";
+			 else
+				 Mat_Label->Text="Determinant : "+det;
 
 		 }
 };
