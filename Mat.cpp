@@ -294,3 +294,72 @@ int Mat::rank(vector<vector<double>> mat)
 	return count;
 }
 
+vector<vector<double>> Mat::Adjoint(vector<vector<double>> ve) //	Adjoint Matrix
+{
+
+	vector<vector<double>> mat,adj;
+	vector<double> temp,adj_temp;
+	double det=0;
+	if(ve.size() != ve[0].size())
+		return mat;
+	
+	
+	for(int ii=0;ii<ve.size();ii++)
+	{
+		adj_temp.clear();
+		for (int jj=0;jj<ve[0].size();jj++)
+		{
+			mat.clear();
+			for(int r=0;r<ve.size();r++)
+			{
+				temp.clear();
+				for (int c=0;c<ve[0].size();c++)
+				{
+					if(r!= ii && c!= jj)
+						temp.push_back(ve[r][c]);
+				}
+				if(!temp.empty())
+				mat.push_back(temp);
+				
+			}
+
+			adj_temp.push_back(pow(-1.0,ii+jj)*Determinant(mat));
+		}
+
+		adj.push_back(adj_temp);
+
+	}
+	return transpose(adj);
+	
+
+
+
+
+
+}
+
+vector<vector<double>> Mat::Inverse(vector<vector<double>> ve) //	Inverse Matrix
+{
+	vector<vector<double>> mat;
+	if(ve.size()!=ve[0].size())
+		return mat;
+
+	mat=scale(1.0/Determinant(ve),Adjoint(ve));
+	return mat;
+
+}
+
+
+vector<vector<double>> Mat::scale(double a,vector<vector<double>> ve) //	Scale Matrix
+{
+	vector<vector<double>> mat;
+	
+	vec->S=ve;
+	for(int i=0;i<vec->S.size();i++)
+	{
+		mat.push_back(vec->pop(a,'a'+i));
+	}
+
+	return mat;
+	
+}

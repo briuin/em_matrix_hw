@@ -124,6 +124,9 @@ namespace Matrix_HW {
 
 	private: System::Windows::Forms::Label^  Rank;
 	private: System::Windows::Forms::Button^  button12;
+	private: System::Windows::Forms::Button^  adjoint_button;
+	private: System::Windows::Forms::Button^  Inverse_buttom;
+
 
 
 
@@ -191,15 +194,17 @@ namespace Matrix_HW {
 			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->button14 = (gcnew System::Windows::Forms::Button());
 			this->Inde_text = (gcnew System::Windows::Forms::TextBox());
 			this->Indepen = (gcnew System::Windows::Forms::Label());
+			this->button12 = (gcnew System::Windows::Forms::Button());
 			this->button11 = (gcnew System::Windows::Forms::Button());
 			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->button14 = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->t_buttom = (gcnew System::Windows::Forms::Button());
+			this->adjoint_button = (gcnew System::Windows::Forms::Button());
 			this->button13 = (gcnew System::Windows::Forms::Button());
 			this->rank_text = (gcnew System::Windows::Forms::TextBox());
 			this->Rank = (gcnew System::Windows::Forms::Label());
@@ -208,7 +213,7 @@ namespace Matrix_HW {
 			this->martrix_input = (gcnew System::Windows::Forms::TextBox());
 			this->Mat_Label = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->button12 = (gcnew System::Windows::Forms::Button());
+			this->Inverse_buttom = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -219,7 +224,7 @@ namespace Matrix_HW {
 			this->Matrix_listBox->FormattingEnabled = true;
 			this->Matrix_listBox->ItemHeight = 15;
 			this->Matrix_listBox->Location = System::Drawing::Point(13, 12);
-			this->Matrix_listBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Matrix_listBox->Margin = System::Windows::Forms::Padding(4);
 			this->Matrix_listBox->Name = L"Matrix_listBox";
 			this->Matrix_listBox->Size = System::Drawing::Size(597, 499);
 			this->Matrix_listBox->TabIndex = 0;
@@ -230,9 +235,9 @@ namespace Matrix_HW {
 			this->groupBox1->Controls->Add(this->OpenVector_button);
 			this->groupBox1->Controls->Add(this->OpenMatrix_button);
 			this->groupBox1->Location = System::Drawing::Point(13, 520);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
 			this->groupBox1->Size = System::Drawing::Size(597, 370);
 			this->groupBox1->TabIndex = 7;
 			this->groupBox1->TabStop = false;
@@ -242,7 +247,7 @@ namespace Matrix_HW {
 			// 
 			this->OpenVector_button->Dock = System::Windows::Forms::DockStyle::Top;
 			this->OpenVector_button->Location = System::Drawing::Point(4, 73);
-			this->OpenVector_button->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->OpenVector_button->Margin = System::Windows::Forms::Padding(4);
 			this->OpenVector_button->Name = L"OpenVector_button";
 			this->OpenVector_button->Size = System::Drawing::Size(589, 54);
 			this->OpenVector_button->TabIndex = 8;
@@ -254,7 +259,7 @@ namespace Matrix_HW {
 			// 
 			this->OpenMatrix_button->Dock = System::Windows::Forms::DockStyle::Top;
 			this->OpenMatrix_button->Location = System::Drawing::Point(4, 19);
-			this->OpenMatrix_button->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->OpenMatrix_button->Margin = System::Windows::Forms::Padding(4);
 			this->OpenMatrix_button->Name = L"OpenMatrix_button";
 			this->OpenMatrix_button->Size = System::Drawing::Size(589, 54);
 			this->OpenMatrix_button->TabIndex = 7;
@@ -312,7 +317,7 @@ namespace Matrix_HW {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F, System::Drawing::FontStyle::Bold));
 			this->button2->ForeColor = System::Drawing::Color::Red;
 			this->button2->Location = System::Drawing::Point(389, 75);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(111, 28);
 			this->button2->TabIndex = 16;
@@ -685,23 +690,10 @@ namespace Matrix_HW {
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Vector";
 			// 
-			// button14
-			// 
-			this->button14->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
-			this->button14->ForeColor = System::Drawing::Color::RoyalBlue;
-			this->button14->Location = System::Drawing::Point(385, 38);
-			this->button14->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button14->Name = L"button14";
-			this->button14->Size = System::Drawing::Size(132, 28);
-			this->button14->TabIndex = 15;
-			this->button14->Text = L"Determinant";
-			this->button14->UseVisualStyleBackColor = true;
-			this->button14->Click += gcnew System::EventHandler(this, &Form1::button14_Click);
-			// 
 			// Inde_text
 			// 
 			this->Inde_text->Location = System::Drawing::Point(141, 319);
-			this->Inde_text->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Inde_text->Margin = System::Windows::Forms::Padding(4);
 			this->Inde_text->Name = L"Inde_text";
 			this->Inde_text->Size = System::Drawing::Size(196, 22);
 			this->Inde_text->TabIndex = 48;
@@ -717,6 +709,19 @@ namespace Matrix_HW {
 			this->Indepen->TabIndex = 47;
 			this->Indepen->Text = L"Indepen";
 			this->Indepen->UseMnemonic = false;
+			// 
+			// button12
+			// 
+			this->button12->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->button12->ForeColor = System::Drawing::Color::Red;
+			this->button12->Location = System::Drawing::Point(352, 314);
+			this->button12->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button12->Name = L"button12";
+			this->button12->Size = System::Drawing::Size(96, 28);
+			this->button12->TabIndex = 44;
+			this->button12->Text = L"check";
+			this->button12->UseVisualStyleBackColor = true;
+			this->button12->Click += gcnew System::EventHandler(this, &Form1::button12_Click);
 			// 
 			// button11
 			// 
@@ -764,9 +769,24 @@ namespace Matrix_HW {
 			this->label10->UseMnemonic = false;
 			this->label10->Click += gcnew System::EventHandler(this, &Form1::label4_Click);
 			// 
+			// button14
+			// 
+			this->button14->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->button14->ForeColor = System::Drawing::Color::RoyalBlue;
+			this->button14->Location = System::Drawing::Point(385, 38);
+			this->button14->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button14->Name = L"button14";
+			this->button14->Size = System::Drawing::Size(132, 28);
+			this->button14->TabIndex = 15;
+			this->button14->Text = L"Determinant";
+			this->button14->UseVisualStyleBackColor = true;
+			this->button14->Click += gcnew System::EventHandler(this, &Form1::button14_Click);
+			// 
 			// groupBox3
 			// 
 			this->groupBox3->Controls->Add(this->t_buttom);
+			this->groupBox3->Controls->Add(this->Inverse_buttom);
+			this->groupBox3->Controls->Add(this->adjoint_button);
 			this->groupBox3->Controls->Add(this->button14);
 			this->groupBox3->Controls->Add(this->button13);
 			this->groupBox3->Controls->Add(this->rank_text);
@@ -797,6 +817,19 @@ namespace Matrix_HW {
 			this->t_buttom->Text = L"caculate";
 			this->t_buttom->UseVisualStyleBackColor = true;
 			this->t_buttom->Click += gcnew System::EventHandler(this, &Form1::transposbuttom_Click);
+			// 
+			// adjoint_button
+			// 
+			this->adjoint_button->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->adjoint_button->ForeColor = System::Drawing::Color::Blue;
+			this->adjoint_button->Location = System::Drawing::Point(523, 38);
+			this->adjoint_button->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->adjoint_button->Name = L"adjoint_button";
+			this->adjoint_button->Size = System::Drawing::Size(92, 28);
+			this->adjoint_button->TabIndex = 15;
+			this->adjoint_button->Text = L"Adjoint";
+			this->adjoint_button->UseVisualStyleBackColor = true;
+			this->adjoint_button->Click += gcnew System::EventHandler(this, &Form1::adjoint_Click);
 			// 
 			// button13
 			// 
@@ -885,18 +918,18 @@ namespace Matrix_HW {
 			this->label11->UseMnemonic = false;
 			this->label11->Click += gcnew System::EventHandler(this, &Form1::label8_Click);
 			// 
-			// button12
+			// Inverse_buttom
 			// 
-			this->button12->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
-			this->button12->ForeColor = System::Drawing::Color::Red;
-			this->button12->Location = System::Drawing::Point(352, 314);
-			this->button12->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button12->Name = L"button12";
-			this->button12->Size = System::Drawing::Size(96, 28);
-			this->button12->TabIndex = 44;
-			this->button12->Text = L"check";
-			this->button12->UseVisualStyleBackColor = true;
-			this->button12->Click += gcnew System::EventHandler(this, &Form1::button12_Click);
+			this->Inverse_buttom->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->Inverse_buttom->ForeColor = System::Drawing::Color::DarkBlue;
+			this->Inverse_buttom->Location = System::Drawing::Point(621, 38);
+			this->Inverse_buttom->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Inverse_buttom->Name = L"Inverse_buttom";
+			this->Inverse_buttom->Size = System::Drawing::Size(92, 28);
+			this->Inverse_buttom->TabIndex = 15;
+			this->Inverse_buttom->Text = L"Inverse";
+			this->Inverse_buttom->UseVisualStyleBackColor = true;
+			this->Inverse_buttom->Click += gcnew System::EventHandler(this, &Form1::Inverse_Click);
 			// 
 			// Form1
 			// 
@@ -907,7 +940,7 @@ namespace Matrix_HW {
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->Matrix_listBox);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
 			this->groupBox1->ResumeLayout(false);
@@ -1539,6 +1572,23 @@ private: System::Void button12_Click(System::Object^  sender, System::EventArgs^
 					
 
 				  }
+private: System::Void adjoint_Click(System::Object^  sender, System::EventArgs^  e) {
+			 button20_Click(sender,e);
+			 vector<vector<double>> adjoint=mat->Adjoint(temps);
+			 if(adjoint.empty())
+				 Mat_Label->Text="Must be NxN matrix.";
+			 else
+				 Mat_Label->Text=std_to_System_string(mat->print_out(adjoint));
+
+		 }
+private: System::Void Inverse_Click(System::Object^  sender, System::EventArgs^  e) {
+			 button20_Click(sender,e);
+			 vector<vector<double>> Inverse=mat->Inverse(temps);
+			 if(Inverse.empty())
+				 Mat_Label->Text="Must be NxN matrix.";
+			 else
+				 Mat_Label->Text=std_to_System_string(mat->print_out(Inverse));
+		 }
 };
 }
 
