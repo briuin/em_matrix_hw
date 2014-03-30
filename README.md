@@ -53,7 +53,7 @@ Matrix Transpose  --- R-Lai
 
 Solve Linear System
 
-Determinants of Matrix
+Determinants of Matrix  --- R-Lai
 
 Inverse Matrix
 
