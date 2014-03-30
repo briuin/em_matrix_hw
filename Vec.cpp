@@ -108,6 +108,27 @@ vector<double> Vec::add(double a,char x,double b,char y)
 	}
 
 }
+vector<double> Vec::addedadd(double a,char x,vector<double> ve)
+{
+	vector<double> sum;
+
+	int index;
+	if(x>='a')
+		index=x-'a';
+	else
+		index=x-'A';
+	if(S[index].size()!=ve.size()|| (unsigned)index>=S.size())
+		return sum;
+
+	for (i=0;i<ve.size();i++)
+	{
+		sum.push_back(a*S[index][i]+ve[i]);
+	}
+	return sum;
+
+
+
+}
 
 
 
@@ -390,4 +411,32 @@ vector<double> Vec::plane_normal(vector<double> va,vector<double> vb,char a,char
 	anstemp=va;
 	anstemp=cross(1,b,anstemp);
 	return anstemp;
+}
+bool Vec::linear_indepen(vector<vector<double>> mat)
+{
+	vector<double> zero;
+	int check=0;
+	for(int i=0;i<mat[0].size();i++)
+		zero.push_back(0);
+	  
+		for(int i=0;i<mat.size();i++)
+		{
+		 for(int j=i+1;j<mat.size();j++)
+			if(mat[i]==mat[j])
+		{
+		    check=1;
+			
+		}
+		}
+
+		for(int i=0;i<mat.size();i++)
+		{
+			if(mat[i]==zero)
+				check=1;
+		}
+
+	if(check==1)
+	return  false;
+	else if(check==0)
+	return true;
 }

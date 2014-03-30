@@ -19,6 +19,7 @@ public:
 	void push(vector<double> a);  //存向量到S
 	vector<double> add(double a,char x,double b,char y);  //加法
 	vector<double> add(double a,char x,vector<double> ve);
+	vector<double> addedadd(double a,char x,vector<double> ve);
 	vector<double> dec(double a,char x,vector<double> ve);  //減法
 	/*vector<double> dot(double a,char x,vector<double> ve);
 	vector<double> mult(double a,char x,vector<double> ve);*/
@@ -41,6 +42,7 @@ public:
 	bool  parall(vector<double>a , vector<double> b);
 	bool  orthogonal(vector<double>a,vector<double>b);
 	double p_norm(double a,char b);
+	bool linear_indepen(vector<vector<double>> mat);
 	int i,j;
 	Vec();
 	~Vec();

@@ -6,17 +6,23 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include "string.h"
+#include "Vec.h"
 
+#define MAX 80
 using namespace std;
 
 class Addedfunc
 {
 public:
 	
+	Vec *addvec;
+	//儲存輸入的向量
 	
 	string erase_space(string s);   //清除字串空白處
 
 	string clearallstupidinput(string s);  //進階版清除字串空白
+	
 	Addedfunc();
 	~Addedfunc();
 };
