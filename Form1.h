@@ -12,6 +12,7 @@
 #include "Addedfunc.h"
 #include <math.h>
 #include "Mat.h"
+#include "vectorOP.h"
 #define PI 3.141592653589793238462643383
 namespace Matrix_HW {
 
@@ -896,8 +897,12 @@ namespace Matrix_HW {
 				 int index=97;
 				 if(o_file!=NULL)
 				 {
+					 int vecNUM=100;
+					 int i=0;
+				
 					 char a ;
 					 o_file >> a ;
+					 vecc = new vector<float> [vecNUM];
 				 while(o_file!=NULL)
 				 {
 
@@ -917,6 +922,7 @@ namespace Matrix_HW {
 
 						 //開始讀取Vector的值
 						 String ^s ;
+						  vector<float> tmpvec;
 						 for( int k=0 ; k<d ; k++)
 						 {
 							 double val ;//用int去讀取vector的值...之後或許會有小數點的值，請改用float
@@ -925,7 +931,7 @@ namespace Matrix_HW {
 							 if(k!=d-1)
 								 s+=",";   //加逗號
 							 temp.push_back(val);//將txt 單一向量讀入temp
-
+							 tmpvec.push_back(val);
 						 }
 
 						 Matrix_listBox->Items->Add("("+s+")");
@@ -934,6 +940,8 @@ namespace Matrix_HW {
 						 Matrix_listBox->Items->Add("-------------------------------------");
 						 s ="";
 						 vec->push(temp);//將向量存入Vec
+						  vecc[i++] = tmpvec;
+
 						 temp.clear();
 
 					 }
@@ -1002,10 +1010,28 @@ private: System::Void OpenMatrix_button_Click(System::Object^  sender, System::E
 			   openMatrix_FileDialog->ShowDialog();
 		 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 std::string VExpression;
+			 MarshalString( textBox1->Text, VExpression );
+			 
+			 //根據輸入的運算式轉成後序式運算
+			 //參考資料如下
+			 //中轉後http://openhome.cc/Gossip/AlgorithmGossip/InFixPostfix.htm
+			 //後序式運算http://openhome.cc/Gossip/AlgorithmGossip/PostfixCal.htm
+			 std::string PostVExpression;
+			 PostVExpression = inToPostfix(VExpression);
+
+			 //利用後序式作向量運算
+			 vector<float> OpVec = eval(PostVExpression);
+			 String ^s = gcnew String("");
+			 for(int i=0;i<OpVec.size();i++)
+			 {
+				 s+=OpVec[i];   
+				 s+=" ";   
+			 }
 			 string sa=SYS_str_to_std(textBox1->Text); // 讀取Textbox的string
 				temp.clear();
 				temps.clear();
-				 char sc[40]; //字元陣列
+				 char sc[80]; //字元陣列
 				 int c=0;  //第幾的字元
 				 double x;  //係數k
 				 bool minus=false; //負號  
@@ -1016,6 +1042,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				  bool cro=false;
 				 bool error_detect=false;
 				 
+				 /*
 				 char cnow;  //a+b 的a
 				 /////////////http://1drv.ms/1n7J8BZ
 				 bool zero=false;
@@ -1047,10 +1074,10 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 					 if(x==0)
 						 x++;
 					 //////////////////////////
-					 /*do 
-					 {
+					 //do 
+					 //{
 						 
-					 } while (!(sc[c]!='+' || sc[c]!='\0'));*/
+					 //} while (!(sc[c]!='+' || sc[c]!='\0'));
 					 cnow=sc[c++];  ///////存 英文代號 :5a+2b的a或b
 
 					 //////////執行運算
@@ -1090,7 +1117,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 
 
 				 } while (!(sc[c]=='\0'));
-
+				 
 				 if(dot)
 				 {
 					 total->Text=""+vec->dot(temps);
@@ -1101,10 +1128,13 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 					 no_normal=true;
 					 total->Text=std_to_System_string("Illegal operation!");
 				 }
-				 else
+				 else*/
 				 {
 					 sum = temp;
-					 total->Text=std_to_System_string(vec->print_out(temp));
+					 //total->Text=std_to_System_string(vec->print_out(temp));
+					 
+					 total->Text=s;
+					
 				 }
 		 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
