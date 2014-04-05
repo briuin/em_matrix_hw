@@ -47,7 +47,7 @@ Matrix addition  --- R-Lai
 
 Matrix Multiplication  --- R-Lai
 
-rank of Matrix   
+rank of Matrix   ---Xiou-hong
  
 Matrix Transpose  --- R-Lai
 
@@ -59,11 +59,11 @@ Inverse Matrix  --- R-Lai
 
 Adjoint Matrix  --- R-Lai
 
-Eigen Vector and Eigen Value
+Eigen Vector and Eigen Value ---xiou-hong
 
-Power Method of Eigen value
+Power Method of Eigen value ---R-Lai
 
-Method of Least Square
+Method of Least Square ---R-Lai
 
 Row Reduction of Matrix(upper triangular and lower triangular)
 
