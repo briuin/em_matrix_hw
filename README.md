@@ -61,9 +61,9 @@ Adjoint Matrix  --- R-Lai
 
 Eigen Vector and Eigen Value ---xiou-hong
 
-Power Method of Eigen value
+Power Method of Eigen value ---R-Lai
 
-Method of Least Square
+Method of Least Square ---R-Lai
 
 Row Reduction of Matrix(upper triangular and lower triangular)
 
