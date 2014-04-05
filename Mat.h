@@ -8,6 +8,7 @@
 #include <sstream>
 #include "Vec.h"
 #include <math.h>
+#define  PI 3.141592653589741
 using namespace std;
 
 class Mat
@@ -36,6 +37,9 @@ public:
 	vector<vector<double>> Adjoint(vector<vector<double>> ve); //	Adjoint Matrix
 	vector<vector<double>> Inverse(vector<vector<double>> ve); //	Inverse Matrix
 	
+
+	vector<double> eigenvalue(vector<vector<double>>mat);  //eigenvalue
+	vector<vector<double>> Power(double n,vector<vector<double>> ve); // Power of matrix
 
 
 };

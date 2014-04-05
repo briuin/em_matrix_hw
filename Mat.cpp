@@ -343,7 +343,8 @@ vector<vector<double>> Mat::Inverse(vector<vector<double>> ve) //	Inverse Matrix
 	vector<vector<double>> mat;
 	if(ve.size()!=ve[0].size())
 		return mat;
-
+	if(Determinant(ve)==0)
+		return mat;
 	mat=scale(1.0/Determinant(ve),Adjoint(ve));
 	return mat;
 
@@ -362,4 +363,47 @@ vector<vector<double>> Mat::scale(double a,vector<vector<double>> ve) //	Scale M
 
 	return mat;
 	
+}
+
+vector<vector<double>> Mat::Power(double n,vector<vector<double>> ve)
+{
+	Mat *m=new Mat();
+	m->push(ve);
+	for(int i=1;i<n;i++)
+		m->M[0]=m->mul(1,'a',ve);
+
+	return m->M[0];
+}
+
+
+vector<double> Mat::eigenvalue(vector<vector<double>>mat)
+{
+	double t[4];
+	vector<double> ans;
+	ans.clear();
+	double angle;
+	double Q,R;
+	if(mat.size()==2)
+	{	
+		t[1]= (-1)*mat[0][0]+(-1)*mat[1][1];
+		t[0]=mat[0][0]*mat[1][1]-mat[0][1]*mat[1][0];	
+		ans.push_back((-1*t[1]+sqrt(t[1]*t[1]-4*1*t[0]))/2);
+		ans.push_back((-1*t[1]-sqrt(t[1]*t[1]-4*1*t[0]))/2);
+
+	}
+	else if(mat.size()==3)
+	{
+		t[2]=-1*(mat[0][0]+mat[1][1]+mat[2][2]);//a
+		t[1]=-1*(-1*(mat[0][0]*mat[1][1]+mat[0][0]*mat[2][2]+mat[1][1]*mat[2][2])+mat[1][2]*mat[2][1]+mat[0][1]*mat[1][0]+mat[2][0]*mat[0][2]);//b
+		t[0]=-1*(mat[0][0]*(mat[1][1]*mat[2][2]-mat[1][2]*mat[2][1])-mat[1][0]*(mat[0][1]*mat[2][2]-mat[0][2]*mat[2][1])+mat[2][0]*(mat[0][1]*mat[1][2]-mat[0][2]*mat[1][1]));//c
+
+		Q = (t[2]*t[2]-3*t[1])/9;
+		R = (2*t[2]*t[2]*t[2]-9*t[1]*t[2]+27*t[0])/54;
+		angle = acos(R/sqrt(pow(Q,3)));
+		ans.push_back(-2*sqrt(Q)*cos(angle/3)-t[2]/3);
+		ans.push_back(-2*sqrt(Q)*cos((angle+2*PI)/3)-t[2]/3);
+		ans.push_back(-2*sqrt(Q)*cos((angle-2*PI)/3)-t[2]/3);
+	}
+
+	return ans;
 }
