@@ -37,7 +37,7 @@ the plane normal that is produced by two vectors (5%) --- briuin
 
 linear independent jugdement (15%)xiou-hong
 
-find orthonormal basis of the basis (15%)
+find orthonormal basis of the basis (15%) R-Lai
 
 <---Matrix--->
 
