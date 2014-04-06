@@ -51,7 +51,7 @@ rank of Matrix   ---Xiou-hong
  
 Matrix Transpose  --- R-Lai
 
-Solve Linear System
+Solve Linear System---Xiou-hong
 
 Determinants of Matrix  --- R-Lai
 
