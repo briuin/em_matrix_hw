@@ -194,10 +194,11 @@ vector<vector<double>> Mat::transpose(vector<vector<double>> ve) //	Matrix Trans
 	return mat;
 }
 
-
+	
 
 double Mat::Determinant(vector<vector<double>> ve) //Determinant
 {
+	ve=UpperTri(ve);
 	vector<vector<double>> mat;
 	vector<double> temp;
 	double det=0;
@@ -214,22 +215,26 @@ double Mat::Determinant(vector<vector<double>> ve) //Determinant
 		
 		for(int ii=0;ii<ve.size();ii++)
 		{
-			mat.clear();
-			for(int r=0;r<ve.size();r++)
+			if(ve[ii][0]!=0)
 			{
-				if(r!=ii)
-				{
-					temp.clear();
-					for (int c=1;c<ve.size();c++)
-					{
-						temp.push_back(ve[r][c]);
-					}
-					mat.push_back(temp);
-				}
+
+				mat=ve;
 				
+				for(int r=0;r<ve.size();r++)
+				{
+					if(r!=ii)
+					{
+						if(r>ii)
+							mat[r-1].erase(mat[r-1].begin());
+						else
+							mat[r].erase(mat[r].begin());
+					}
+					else
+						mat.erase(mat.begin()+r);
+				}
+
+				det+=ve[ii][0]*pow(-1.0,ii)*Determinant(mat);
 			}
-			
-			det+=ve[ii][0]*pow(-1.0,ii)*Determinant(mat);
 
 		}
 		return det;
@@ -311,19 +316,22 @@ vector<vector<double>> Mat::Adjoint(vector<vector<double>> ve) //	Adjoint Matrix
 		adj_temp.clear();
 		for (int jj=0;jj<ve[0].size();jj++)
 		{
-			mat.clear();
+			mat=ve;
+			
 			for(int r=0;r<ve.size();r++)
 			{
-				temp.clear();
-				for (int c=0;c<ve[0].size();c++)
+				if(r!=ii)
 				{
-					if(r!= ii && c!= jj)
-						temp.push_back(ve[r][c]);
+
+					if(r>ii)
+						mat[r-1].erase(mat[r-1].begin()+jj);
+					else
+						mat[r].erase(mat[r].begin()+jj);
 				}
-				if(!temp.empty())
-				mat.push_back(temp);
-				
+				else
+					mat.erase(mat.begin()+r);
 			}
+
 
 			adj_temp.push_back(pow(-1.0,ii+jj)*Determinant(mat));
 		}
@@ -494,4 +502,115 @@ vector<vector<double>>Mat::eigenvector(vector<double>val,vector<vector<double>>m
 		}
 	}
 	return ans_vec;
+}
+
+vector<double> Mat::solveliner(vector<vector<double>> a ,vector<vector<double>> b)
+{
+	vector<double> ans;
+	double tx[100];
+	for(int i=0;i<a.size();i++)
+		a[i].push_back(b[i][0]);
+
+	a = gaussian_elimination(a);
+	for(int i=0;i<a.size();i++)
+	{
+		tx[i]=0;
+	}
+	for(int i =a[0].size()-2;i>=0;i--)
+	{
+		for(int j=a[0].size()-2;j>i;j--)
+		{
+			tx[i]+=-1*a[i][j]*tx[j];
+
+		}
+		tx[i]+=a[i][a[0].size()-1];
+	}
+	for(int i = 0; i<a.size();i++)
+	{
+		ans.push_back(tx[i]);
+	}
+
+	return ans;
+}
+vector<vector<double>> Mat::UpperTri(vector<vector<double>> mat)
+{
+	double temp;
+
+
+	for(int i=0;i<mat.size();i++)
+	{
+		if(i<mat.size()&&i<mat[0].size())
+		{
+			if(mat[i][i]==0)//第一列為零 與下面不為零的列做交換
+				for(int j=i+1;j<mat.size();j++)
+					if(mat[j][i]!=0)
+					{
+						for(int k=i;k<mat[0].size();k++)
+						{
+							temp=mat[i][k]; 
+							mat[i][k]=mat[j][k];
+							mat[j][k]= temp;
+						}
+						break;
+					}
+
+					if (mat[i][i] == 0) continue;
+					// 上方row的首項係數調整成一
+					double t0 = mat[i][i];
+					for (int k=i; k<mat[0].size(); k++)
+						mat[i][k] /= t0;
+					for (int j=i+1; j<mat.size(); j++)
+
+						if (mat[j][i] != 0)
+						{
+							double t = mat[j][i];
+							for (int k=i; k<mat[0].size(); k++)
+								mat[j][k] -= mat[i][k] * t;
+						}
+						for (int k=i; k<mat[0].size(); k++)
+							mat[i][k] *= t0;
+
+		}
+	}
+	return mat;
+}
+
+vector<vector<double>> Mat::DownTri(vector<vector<double>> mat)
+{
+	double temp;
+
+
+	for(int i=mat.size()-1;i>=0;i--)
+	{
+
+		if(mat[i][i]==0)//尾列為零 與下面不為零的列做交換
+			for(int j=i-1;j>=0;j--)
+				if(mat[j][i]!=0)
+				{
+					for(int k=0;k<mat.size();k++)
+					{
+						temp=mat[i][k]; 
+						mat[i][k]=mat[j][k];
+						mat[j][k]= temp;
+					}
+					break;
+				}
+
+				if (mat[i][i] == 0) continue;
+				// 最下方row的尾項係數調整成一
+				double t = mat[i][i];
+				for (int k=0; k<mat.size(); k++)
+					mat[i][k] /= t;
+				for (int j=i-1; j>=0; j--)
+					if (mat[j][i] != 0)
+					{
+						double t = mat[j][i];
+						for (int k=i; k>=0; k--)
+							mat[j][k] -= mat[i][k] * t;
+					}
+
+
+
+	}
+	return mat;
 }

@@ -45,4 +45,8 @@ public:
 
 	vector<vector<double>> eigenvector(vector<double> val,vector<vector<double>>mat); //eigenvector
 
+	vector<double> solveliner(vector<vector<double>>a,vector<vector<double>> b);
+
+	vector<vector<double>> UpperTri(vector<vector<double>> mat);
+	vector<vector<double>> DownTri(vector<vector<double>> mat);
 };

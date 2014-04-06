@@ -440,3 +440,50 @@ bool Vec::linear_indepen(vector<vector<double>> mat)
 	else if(check==0)
 	return true;
 }
+
+vector<vector<double>> Vec::OrthogonalBasis(vector<vector<double>>  ve)
+{
+	vector<vector<double>> orth;
+	if(ve.size()!=ve[0].size())
+		return orth;
+	vector<double>temp;
+	vector<double> u;
+	Vec *vec=new Vec();
+	for (int i=0;i<ve.size();i++)
+	{
+
+		temp=ve[i];
+		u=ve[i];
+		for(int j=0;j<i;j++)
+		{
+
+			Vec *temp2=new Vec();
+			temp2->push(vec->pop(vec->dot(u,orth[j])/vec->dot(orth[j],orth[j]),'a'+j));
+			temp=temp2->dec(1,'a',temp);
+			
+		}
+		vec->push(temp);
+		orth.push_back(temp);
+
+	}
+
+	for (int i=0;i<orth.size();i++)
+	{
+		vec=new Vec();
+		vec->push(orth[i]);
+		orth[i]=vec->pop(1.0/vec->length(orth[i]),'a');
+	}
+	return orth;
+}
+
+double Vec::dot(vector<double> a,vector<double> b)
+{
+	double dot=0;
+	double temp;
+	for(int i=0;i<a.size();i++)
+	{
+		dot+=a[i]*b[i];
+	}
+
+	return dot;
+}

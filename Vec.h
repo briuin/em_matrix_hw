@@ -21,6 +21,7 @@ public:
 	vector<double> add(double a,unsigned char x,vector<double> ve);
 	vector<double> addedadd(double a,unsigned char x,vector<double> ve);
 	vector<double> dec(double a,unsigned char x,vector<double> ve);  //´îªk
+	double dot(vector<double> a,vector<double> b);
 	/*vector<double> dot(double a,unsigned char x,vector<double> ve);
 	vector<double> mult(double a,unsigned char x,vector<double> ve);*/
 	void push(string str);  //¦r¦ê¦s¨ìS "(3,4,5)"
@@ -43,6 +44,7 @@ public:
 	bool  orthogonal(vector<double>a,vector<double>b);
 	double p_norm(double a,unsigned char b);
 	bool linear_indepen(vector<vector<double>> mat);
+	vector<vector<double>> OrthogonalBasis(vector<vector<double>>  ve);
 	int i,j;
 	Vec();
 	~Vec();
