@@ -35,9 +35,9 @@ the angle between two vectors (5%) --- briuin
 
 the plane normal that is produced by two vectors (5%) --- briuin
 
-linear independent jugdement (15%)
+linear independent jugdement (15%)xiou-hong
 
-find orthonormal basis of the basis (15%)
+find orthonormal basis of the basis (15%) R-Lai
 
 <---Matrix--->
 
@@ -51,7 +51,7 @@ rank of Matrix   ---Xiou-hong
  
 Matrix Transpose  --- R-Lai
 
-Solve Linear System
+Solve Linear System---Xiou-hong
 
 Determinants of Matrix  --- R-Lai
 
@@ -65,6 +65,6 @@ Power Method of Eigen value ---R-Lai
 
 Method of Least Square ---R-Lai
 
-Row Reduction of Matrix(upper triangular and lower triangular)
+Row Reduction of Matrix(upper triangular and lower triangular)---xiou-hong
 
 Friendly Interface
