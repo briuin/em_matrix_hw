@@ -17,7 +17,7 @@ void Vec::push(vector<double> a)
 void Vec::push(string str)
 {
 	vector<double> temp;
-	char s[40];
+	 char s[40];
 	bool minus=false;
 	int c=0;
 	double x;
@@ -60,7 +60,7 @@ void Vec::push(string str)
 }
 
 
-double Vec::p_norm(double a,char b)
+double Vec::p_norm(double a,unsigned char b)
 {
 	int index_x;
 	double x=0;
@@ -81,7 +81,7 @@ double Vec::p_norm(double a,char b)
 
 }
 
-vector<double> Vec::add(double a,char x,double b,char y)
+vector<double> Vec::add(double a,unsigned char x,double b,unsigned char y)
 {
 	vector<double> temp;
 	int index_x,index_y;
@@ -108,7 +108,7 @@ vector<double> Vec::add(double a,char x,double b,char y)
 	}
 
 }
-vector<double> Vec::addedadd(double a,char x,vector<double> ve)
+vector<double> Vec::addedadd(double a,unsigned char x,vector<double> ve)
 {
 	vector<double> sum;
 
@@ -148,7 +148,7 @@ string Vec::print_out(vector<double> a)
 	return temp.str();
 }
 
-vector<double> Vec::pop(double a,char x)
+vector<double> Vec::pop(double a,unsigned char x)
 {
 	vector<double> sum;
 	int index;
@@ -167,7 +167,7 @@ vector<double> Vec::pop(double a,char x)
 
 }
 
-double Vec::length(char x)
+double Vec::length(unsigned char x)
 {
 	double sum=9999;
 	int index;
@@ -194,7 +194,7 @@ double Vec::length(vector<double> ve)
 
 	return sqrt(sum);
 }
-vector<double> Vec::add(double a,char x,vector<double> ve)
+vector<double> Vec::add(double a,unsigned char x,vector<double> ve)
 {
 	vector<double> sum;
 
@@ -233,7 +233,7 @@ double Vec::dot(vector<vector<double>> ve)
 
 }
 
-vector<double> Vec::dec(double a,char x,vector<double> ve)
+vector<double> Vec::dec(double a,unsigned char x,vector<double> ve)
 {
 	vector<double> sum;
 
@@ -266,7 +266,7 @@ vector<double>Vec::normal(vector<double> ve)
 	return nor ;
 
 }
-vector<double>Vec::cross(double a , char x , vector<double> ve )
+vector<double>Vec::cross(double a , unsigned char x , vector<double> ve )
 {
 	vector<double> cro;
 	int index;
@@ -314,7 +314,7 @@ double Vec::magnitude_to_double(vector<double> ve)
 	return sum;
 
 }
-double Vec::component(vector<double> va,vector<double> vb,char a,char b)
+double Vec::component(vector<double> va,vector<double> vb,unsigned char a,unsigned char b)
 {
 	vector<double> anstemp;
 	vector<vector<double>> anstemps;
@@ -328,7 +328,7 @@ double Vec::component(vector<double> va,vector<double> vb,char a,char b)
 	return ans ;
 
 }
-vector<double> Vec::projection(vector<double> va,vector<double> vb,char a,char b)
+vector<double> Vec::projection(vector<double> va,vector<double> vb,unsigned char a,unsigned char b)
 {
 	double compans,projans;
 	vector<double> proj;
@@ -364,7 +364,7 @@ bool Vec::orthogonal(vector<double>a,vector<double>b)
 
 }
 
-double Vec::area_of_parallelogram(vector<double> va,vector<double> vb,char a,char b)
+double Vec::area_of_parallelogram(vector<double> va,vector<double> vb,unsigned char a,unsigned char b)
 {
 	vector<double> anstemp;
 	double ans;
@@ -373,7 +373,7 @@ double Vec::area_of_parallelogram(vector<double> va,vector<double> vb,char a,cha
 	ans=magnitude_to_double(anstemp);
 	return ans;
 }
-double Vec::area_of_triangle(vector<double> va,vector<double> vb,char a,char b)
+double Vec::area_of_triangle(vector<double> va,vector<double> vb,unsigned char a,unsigned char b)
 {
 	vector<double> anstemp;
 	double ans;
@@ -383,7 +383,7 @@ double Vec::area_of_triangle(vector<double> va,vector<double> vb,char a,char b)
 	ans=ans/2;
 	return ans;
 }
-double Vec::angle(vector<double> va,vector<double> vb,char a,char b)
+double Vec::angle(vector<double> va,vector<double> vb,unsigned char a,unsigned char b)
 {
 	vector<vector<double>> temps;
 	double maga,magb,ans;
@@ -404,7 +404,7 @@ double Vec::angle(vector<double> va,vector<double> vb,char a,char b)
 	}
 	return ans;
 }
-vector<double> Vec::plane_normal(vector<double> va,vector<double> vb,char a,char b)
+vector<double> Vec::plane_normal(vector<double> va,vector<double> vb,unsigned char a,unsigned char b)
 {
 	vector<double> anstemp;
 	double ans;

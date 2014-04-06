@@ -21,12 +21,12 @@ public:
 	vector<vector<vector<double>>> M; //儲存所有陣列
 	void push(vector<vector<double>> x);
 	
-	vector<vector<double>> pop(double a,char x);  //取出陣列
+	vector<vector<double>> pop(double a,unsigned char x);  //取出陣列
 	string print_out(vector<vector<double>> a);  //印出陣列
-	vector<vector<double>> add(double a,char x,double b,char y);  //加法
-	vector<vector<double>> add(double a,char x,vector<vector<double>> ve);
-	vector<vector<double>> dec(double a,char x,vector<vector<double>> ve);  //減法
-	vector<vector<double>> mul(double a,char x,vector<vector<double>> ve);  //乘法
+	vector<vector<double>> add(double a,unsigned char x,double b,unsigned char y);  //加法
+	vector<vector<double>> add(double a,unsigned char x,vector<vector<double>> ve);
+	vector<vector<double>> dec(double a,unsigned char x,vector<vector<double>> ve);  //減法
+	vector<vector<double>> mul(double a,unsigned char x,vector<vector<double>> ve);  //乘法
 	vector<vector<double>> transpose(vector<vector<double>> ve); //	Matrix Transpose
 	vector<vector<double>> scale(double a,vector<vector<double>> ve); //	Scale Matrix
 	double Determinant(vector<vector<double>> ve);  //Determinant
@@ -41,5 +41,8 @@ public:
 	vector<double> eigenvalue(vector<vector<double>>mat);  //eigenvalue
 	vector<vector<double>> Power(double n,vector<vector<double>> ve); // Power of matrix
 
+	vector<vector<double>> LeastSquare(vector<vector<double>> x,vector<vector<double>> y); //Least Square
+
+	vector<vector<double>> eigenvector(vector<double> val,vector<vector<double>>mat); //eigenvector
 
 };

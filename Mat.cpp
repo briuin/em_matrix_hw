@@ -15,10 +15,10 @@ void Mat::push(vector<vector<double>> x)
 }
 
 
-vector<vector<double>> Mat::pop(double a,char x)
+vector<vector<double>> Mat::pop(double a,unsigned char x)
 {
 	vector<vector<double>> temp;
-	
+	Vec *vec=new Vec();
 	int index;
 	if(x>='a')
 		index=x-'a';
@@ -27,13 +27,13 @@ vector<vector<double>> Mat::pop(double a,char x)
 	if( (unsigned)index<M.size())
 	{
 		vec->S=M[index];
-		for (i=0;i<M[index].size();i++)
+		for (int i=0;i<M[index].size();i++)
 		{
 			temp.push_back(vec->pop(a,i+'a'));
 		}
 	}
 			
-			
+	
 
 
 	return temp;
@@ -65,7 +65,7 @@ string Mat::print_out(vector<vector<double>> a)
 	return temp.str();
 }
 
-vector<vector<double>> Mat::add(double a,char x,double b,char y)  //¥[ªk
+vector<vector<double>> Mat::add(double a,unsigned char x,double b,unsigned char y)  //¥[ªk
 {
 	vector<vector<double>> temp;
 	int index_x,index_y;
@@ -95,7 +95,7 @@ vector<vector<double>> Mat::add(double a,char x,double b,char y)  //¥[ªk
 }
 
 
-vector<vector<double>> Mat::add(double a,char x,vector<vector<double>> ve) //¥[ªk
+vector<vector<double>> Mat::add(double a,unsigned char x,vector<vector<double>> ve) //¥[ªk
 {
 	vector<vector<double>> temp;
 	int index_x;
@@ -112,12 +112,14 @@ vector<vector<double>> Mat::add(double a,char x,vector<vector<double>> ve) //¥[ª
 
 	for (i=0;i<M[index_x].size();i++)
 	{
+		/*if(vec->add(a,'a'+i,ve[i]).empty())
+			return temp;*/
 		temp.push_back(vec->add(a,'a'+i,ve[i]));
 	}
 
 	return temp;
 }
-vector<vector<double>> Mat::dec(double a,char x,vector<vector<double>> ve)  //´îªk
+vector<vector<double>> Mat::dec(double a,unsigned char x,vector<vector<double>> ve)  //´îªk
 {
 	vector<vector<double>> temp;
 	int index_x;
@@ -140,7 +142,7 @@ vector<vector<double>> Mat::dec(double a,char x,vector<vector<double>> ve)  //´î
 	return temp;
 }
 
-vector<vector<double>> Mat::mul(double a,char x,vector<vector<double>> ve)  //­¼ªk
+vector<vector<double>> Mat::mul(double a,unsigned char x,vector<vector<double>> ve)  //­¼ªk
 {
 	vector<vector<double>> temp;
 	vector<vector<double>> T_mat;
@@ -406,4 +408,90 @@ vector<double> Mat::eigenvalue(vector<vector<double>>mat)
 	}
 
 	return ans;
+}
+
+
+vector<vector<double>> Mat::LeastSquare(vector<vector<double>> x,vector<vector<double>> y) //Least Square
+{
+	vector<vector<double>> mat;
+	Mat *m_temp=new Mat();
+	if(x.empty() || y.empty())
+		return mat;
+	else if(x[0].size()!=y.size())
+		return mat;
+	m_temp->push(x);
+	mat=m_temp->mul(1,'a',transpose(x));
+	mat=m_temp->mul(1,'a',Inverse(mat));
+	m_temp->M[0]=y;
+	mat=m_temp->mul(1,'a',mat);
+	return mat;
+
+}
+
+vector<vector<double>>Mat::eigenvector(vector<double>val,vector<vector<double>>mat)
+{
+	vector<vector<double>> t;
+	double tx[3];
+	vector<vector<double>> ans_vec;
+	vector<double> temp;
+	int k=0;
+	if(mat.size()==2)
+	{	
+		for(int i =0;i<val.size();i++)
+		{
+			t.clear();
+			temp.clear();
+			temp.push_back(mat[0][0]-val[i]);
+			temp.push_back(mat[0][1]);
+			t.push_back(temp);
+			temp.clear();
+			temp.push_back(mat[1][0]);
+			temp.push_back(mat[1][1]-val[i]);
+			t.push_back(temp);
+			t=gaussian_elimination(t);
+			temp.clear();
+			temp.push_back(t[0][0]);
+			temp.push_back(-1*t[0][1]);
+			temp=vec->normal(temp);
+			ans_vec.push_back(temp);
+
+
+		}
+
+	}
+	else if(mat.size()==3)
+	{
+		for(int i =0;i<val.size();i++)
+		{
+			t.clear();
+			for(int k=0;k<mat.size();k++)
+			{
+				temp.clear();
+				for(int h=0;h<mat.size();h++)
+				{
+					if(k==h)
+					{
+						temp.push_back(mat[k][h]-val[i]);
+					}
+					else
+					{
+						temp.push_back(mat[k][h]);
+					}
+				}
+				t.push_back(temp);
+
+			}
+			temp.clear();
+			t=gaussian_elimination(t);
+			tx[2]=1;
+			tx[1]=-1*t[1][2]*tx[2]/t[1][1];
+			tx[0]=-1*(tx[1]*t[0][1]+tx[2]*t[0][2])/t[0][0];
+			temp.push_back(tx[0]);
+			temp.push_back(tx[1]);
+			temp.push_back(tx[2]);
+			temp=vec->normal(temp);
+			ans_vec.push_back(temp);
+		}
+	}
+	return ans_vec;
 }
