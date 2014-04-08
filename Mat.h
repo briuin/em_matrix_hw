@@ -39,7 +39,8 @@ public:
 	
 
 	vector<double> eigenvalue(vector<vector<double>>mat);  //eigenvalue
-	vector<vector<double>> Power(double n,vector<vector<double>> ve); // Power of matrix
+	
+		vector<vector<double>> PowEigen(vector<vector<double>> mat);
 
 	vector<vector<double>> LeastSquare(vector<vector<double>> x,vector<vector<double>> y); //Least Square
 
@@ -49,4 +50,6 @@ public:
 
 	vector<vector<double>> UpperTri(vector<vector<double>> mat);
 	vector<vector<double>> DownTri(vector<vector<double>> mat);
+
+	
 };

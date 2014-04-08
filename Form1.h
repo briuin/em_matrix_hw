@@ -127,9 +127,9 @@ namespace Matrix_HW {
 	private: System::Windows::Forms::Button^  adjoint_button;
 	private: System::Windows::Forms::Button^  Inverse_buttom;
 	private: System::Windows::Forms::Button^  Power_buttom;
-	private: System::Windows::Forms::TextBox^  power_n;
+
 	private: System::Windows::Forms::TextBox^  Power_a;
-	private: System::Windows::Forms::Label^  label13;
+
 	private: System::Windows::Forms::Label^  label12;
 	private: System::Windows::Forms::Button^  Eginvalue;
 	private: System::Windows::Forms::TextBox^  Liner_x;
@@ -162,6 +162,9 @@ private: System::Windows::Forms::TextBox^  RowReduction;
 private: System::Windows::Forms::Label^  label23;
 private: System::Windows::Forms::TextBox^  orthbox;
 private: System::Windows::Forms::Label^  label24;
+private: System::Windows::Forms::ListBox^  answer;
+
+
 
 
 
@@ -231,7 +234,9 @@ private: System::Windows::Forms::Label^  label24;
 			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->answer = (gcnew System::Windows::Forms::ListBox());
 			this->button16 = (gcnew System::Windows::Forms::Button());
+			this->orthbox = (gcnew System::Windows::Forms::TextBox());
 			this->Inde_text = (gcnew System::Windows::Forms::TextBox());
 			this->Indepen = (gcnew System::Windows::Forms::Label());
 			this->button12 = (gcnew System::Windows::Forms::Button());
@@ -239,6 +244,7 @@ private: System::Windows::Forms::Label^  label24;
 			this->scaleBoxa = (gcnew System::Windows::Forms::TextBox());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->label24 = (gcnew System::Windows::Forms::Label());
 			this->label17 = (gcnew System::Windows::Forms::Label());
 			this->button11 = (gcnew System::Windows::Forms::Button());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
@@ -258,7 +264,6 @@ private: System::Windows::Forms::Label^  label24;
 			this->rank_text = (gcnew System::Windows::Forms::TextBox());
 			this->Rank = (gcnew System::Windows::Forms::Label());
 			this->button20 = (gcnew System::Windows::Forms::Button());
-			this->power_n = (gcnew System::Windows::Forms::TextBox());
 			this->RowReduction = (gcnew System::Windows::Forms::TextBox());
 			this->solve_b = (gcnew System::Windows::Forms::TextBox());
 			this->Liner_y = (gcnew System::Windows::Forms::TextBox());
@@ -268,7 +273,6 @@ private: System::Windows::Forms::Label^  label24;
 			this->transtbox = (gcnew System::Windows::Forms::TextBox());
 			this->martrix_input = (gcnew System::Windows::Forms::TextBox());
 			this->Mat_Label = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->label21 = (gcnew System::Windows::Forms::Label());
@@ -278,8 +282,6 @@ private: System::Windows::Forms::Label^  label24;
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label24 = (gcnew System::Windows::Forms::Label());
-			this->orthbox = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -292,7 +294,7 @@ private: System::Windows::Forms::Label^  label24;
 			this->Matrix_listBox->Location = System::Drawing::Point(13, 12);
 			this->Matrix_listBox->Margin = System::Windows::Forms::Padding(4);
 			this->Matrix_listBox->Name = L"Matrix_listBox";
-			this->Matrix_listBox->Size = System::Drawing::Size(597, 499);
+			this->Matrix_listBox->Size = System::Drawing::Size(481, 499);
 			this->Matrix_listBox->TabIndex = 0;
 			this->Matrix_listBox->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::Matrix_listBox_SelectedIndexChanged);
 			// 
@@ -304,7 +306,7 @@ private: System::Windows::Forms::Label^  label24;
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
-			this->groupBox1->Size = System::Drawing::Size(597, 370);
+			this->groupBox1->Size = System::Drawing::Size(481, 370);
 			this->groupBox1->TabIndex = 7;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"OpenFile";
@@ -315,7 +317,7 @@ private: System::Windows::Forms::Label^  label24;
 			this->OpenVector_button->Location = System::Drawing::Point(4, 73);
 			this->OpenVector_button->Margin = System::Windows::Forms::Padding(4);
 			this->OpenVector_button->Name = L"OpenVector_button";
-			this->OpenVector_button->Size = System::Drawing::Size(589, 54);
+			this->OpenVector_button->Size = System::Drawing::Size(473, 54);
 			this->OpenVector_button->TabIndex = 8;
 			this->OpenVector_button->Text = L"Open_VectorFile";
 			this->OpenVector_button->UseVisualStyleBackColor = true;
@@ -327,7 +329,7 @@ private: System::Windows::Forms::Label^  label24;
 			this->OpenMatrix_button->Location = System::Drawing::Point(4, 19);
 			this->OpenMatrix_button->Margin = System::Windows::Forms::Padding(4);
 			this->OpenMatrix_button->Name = L"OpenMatrix_button";
-			this->OpenMatrix_button->Size = System::Drawing::Size(589, 54);
+			this->OpenMatrix_button->Size = System::Drawing::Size(473, 54);
 			this->OpenMatrix_button->TabIndex = 7;
 			this->OpenMatrix_button->Text = L"Open_MatrixFile";
 			this->OpenMatrix_button->UseVisualStyleBackColor = true;
@@ -347,7 +349,7 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
 			this->button1->ForeColor = System::Drawing::Color::Red;
-			this->button1->Location = System::Drawing::Point(283, 75);
+			this->button1->Location = System::Drawing::Point(283, 69);
 			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(96, 28);
@@ -368,11 +370,11 @@ private: System::Windows::Forms::Label^  label24;
 			// total
 			// 
 			this->total->AutoSize = true;
-			this->total->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(128)));
+			this->total->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
 			this->total->Location = System::Drawing::Point(22, 27);
 			this->total->Name = L"total";
-			this->total->Size = System::Drawing::Size(58, 25);
+			this->total->Size = System::Drawing::Size(42, 17);
 			this->total->TabIndex = 11;
 			this->total->Text = L"Sum";
 			this->total->UseMnemonic = false;
@@ -380,9 +382,9 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F, System::Drawing::FontStyle::Bold));
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold));
 			this->button2->ForeColor = System::Drawing::Color::Red;
-			this->button2->Location = System::Drawing::Point(389, 75);
+			this->button2->Location = System::Drawing::Point(386, 68);
 			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(111, 28);
@@ -393,7 +395,7 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(513, 75);
+			this->button3->Location = System::Drawing::Point(502, 68);
 			this->button3->Margin = System::Windows::Forms::Padding(1, 2, 1, 2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(85, 28);
@@ -708,6 +710,7 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->answer);
 			this->groupBox2->Controls->Add(this->button16);
 			this->groupBox2->Controls->Add(this->orthbox);
 			this->groupBox2->Controls->Add(this->Inde_text);
@@ -754,20 +757,30 @@ private: System::Windows::Forms::Label^  label24;
 			this->groupBox2->Controls->Add(this->button1);
 			this->groupBox2->Controls->Add(this->textBox1);
 			this->groupBox2->Controls->Add(this->total);
-			this->groupBox2->Location = System::Drawing::Point(643, 12);
+			this->groupBox2->Location = System::Drawing::Point(501, 12);
 			this->groupBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox2->Size = System::Drawing::Size(1612, 352);
+			this->groupBox2->Size = System::Drawing::Size(1612, 499);
 			this->groupBox2->TabIndex = 45;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Vector";
+			// 
+			// answer
+			// 
+			this->answer->FormattingEnabled = true;
+			this->answer->HorizontalScrollbar = true;
+			this->answer->ItemHeight = 15;
+			this->answer->Location = System::Drawing::Point(621, 15);
+			this->answer->Name = L"answer";
+			this->answer->Size = System::Drawing::Size(718, 484);
+			this->answer->TabIndex = 49;
 			// 
 			// button16
 			// 
 			this->button16->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
 			this->button16->ForeColor = System::Drawing::Color::Red;
-			this->button16->Location = System::Drawing::Point(967, 217);
+			this->button16->Location = System::Drawing::Point(429, 397);
 			this->button16->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button16->Name = L"button16";
 			this->button16->Size = System::Drawing::Size(96, 30);
@@ -775,6 +788,14 @@ private: System::Windows::Forms::Label^  label24;
 			this->button16->Text = L"caculate";
 			this->button16->UseVisualStyleBackColor = true;
 			this->button16->Click += gcnew System::EventHandler(this, &Form1::orth_Click);
+			// 
+			// orthbox
+			// 
+			this->orthbox->Location = System::Drawing::Point(253, 403);
+			this->orthbox->Margin = System::Windows::Forms::Padding(4);
+			this->orthbox->Name = L"orthbox";
+			this->orthbox->Size = System::Drawing::Size(164, 22);
+			this->orthbox->TabIndex = 48;
 			// 
 			// Inde_text
 			// 
@@ -811,7 +832,7 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			// scaleBoxn
 			// 
-			this->scaleBoxn->Location = System::Drawing::Point(650, 178);
+			this->scaleBoxn->Location = System::Drawing::Point(162, 443);
 			this->scaleBoxn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->scaleBoxn->Name = L"scaleBoxn";
 			this->scaleBoxn->Size = System::Drawing::Size(36, 22);
@@ -819,7 +840,7 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			// scaleBoxa
 			// 
-			this->scaleBoxa->Location = System::Drawing::Point(589, 178);
+			this->scaleBoxa->Location = System::Drawing::Point(101, 443);
 			this->scaleBoxa->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->scaleBoxa->Name = L"scaleBoxa";
 			this->scaleBoxa->Size = System::Drawing::Size(36, 22);
@@ -830,7 +851,7 @@ private: System::Windows::Forms::Label^  label24;
 			this->label19->AutoSize = true;
 			this->label19->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(128)));
-			this->label19->Location = System::Drawing::Point(692, 175);
+			this->label19->Location = System::Drawing::Point(204, 440);
 			this->label19->Name = L"label19";
 			this->label19->Size = System::Drawing::Size(20, 25);
 			this->label19->TabIndex = 39;
@@ -842,19 +863,32 @@ private: System::Windows::Forms::Label^  label24;
 			this->label18->AutoSize = true;
 			this->label18->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(128)));
-			this->label18->Location = System::Drawing::Point(629, 175);
+			this->label18->Location = System::Drawing::Point(141, 440);
 			this->label18->Name = L"label18";
 			this->label18->Size = System::Drawing::Size(17, 25);
 			this->label18->TabIndex = 39;
 			this->label18->Text = L",";
 			this->label18->UseMnemonic = false;
 			// 
+			// label24
+			// 
+			this->label24->AutoSize = true;
+			this->label24->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(128)));
+			this->label24->Location = System::Drawing::Point(17, 400);
+			this->label24->Name = L"label24";
+			this->label24->Size = System::Drawing::Size(229, 25);
+			this->label24->TabIndex = 39;
+			this->label24->Text = L"orthonormal basis of";
+			this->label24->UseMnemonic = false;
+			this->label24->Click += gcnew System::EventHandler(this, &Form1::label8_Click);
+			// 
 			// label17
 			// 
 			this->label17->AutoSize = true;
 			this->label17->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(128)));
-			this->label17->Location = System::Drawing::Point(508, 176);
+			this->label17->Location = System::Drawing::Point(20, 441);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(86, 25);
 			this->label17->TabIndex = 39;
@@ -866,7 +900,7 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			this->button11->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
 			this->button11->ForeColor = System::Drawing::Color::Red;
-			this->button11->Location = System::Drawing::Point(634, 133);
+			this->button11->Location = System::Drawing::Point(227, 357);
 			this->button11->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button11->Name = L"button11";
 			this->button11->Size = System::Drawing::Size(96, 28);
@@ -877,12 +911,11 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			// textBox10
 			// 
-			this->textBox10->Location = System::Drawing::Point(582, 139);
+			this->textBox10->Location = System::Drawing::Point(92, 363);
 			this->textBox10->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(43, 22);
+			this->textBox10->Size = System::Drawing::Size(129, 22);
 			this->textBox10->TabIndex = 24;
-			this->textBox10->Text = L"p";
 			this->textBox10->TextChanged += gcnew System::EventHandler(this, &Form1::textBox5_TextChanged);
 			// 
 			// label10
@@ -890,7 +923,7 @@ private: System::Windows::Forms::Label^  label24;
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(128)));
-			this->label10->Location = System::Drawing::Point(509, 138);
+			this->label10->Location = System::Drawing::Point(19, 362);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(68, 25);
 			this->label10->TabIndex = 23;
@@ -927,7 +960,6 @@ private: System::Windows::Forms::Label^  label24;
 			this->groupBox3->Controls->Add(this->rank_text);
 			this->groupBox3->Controls->Add(this->Rank);
 			this->groupBox3->Controls->Add(this->button20);
-			this->groupBox3->Controls->Add(this->power_n);
 			this->groupBox3->Controls->Add(this->RowReduction);
 			this->groupBox3->Controls->Add(this->solve_b);
 			this->groupBox3->Controls->Add(this->Liner_y);
@@ -937,7 +969,6 @@ private: System::Windows::Forms::Label^  label24;
 			this->groupBox3->Controls->Add(this->transtbox);
 			this->groupBox3->Controls->Add(this->martrix_input);
 			this->groupBox3->Controls->Add(this->Mat_Label);
-			this->groupBox3->Controls->Add(this->label13);
 			this->groupBox3->Controls->Add(this->label22);
 			this->groupBox3->Controls->Add(this->label16);
 			this->groupBox3->Controls->Add(this->label21);
@@ -947,11 +978,11 @@ private: System::Windows::Forms::Label^  label24;
 			this->groupBox3->Controls->Add(this->label12);
 			this->groupBox3->Controls->Add(this->label23);
 			this->groupBox3->Controls->Add(this->label11);
-			this->groupBox3->Location = System::Drawing::Point(643, 378);
+			this->groupBox3->Location = System::Drawing::Point(501, 520);
 			this->groupBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox3->Size = System::Drawing::Size(1612, 942);
+			this->groupBox3->Size = System::Drawing::Size(854, 370);
 			this->groupBox3->TabIndex = 46;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"matrix";
@@ -1119,14 +1150,6 @@ private: System::Windows::Forms::Label^  label24;
 			this->button20->UseVisualStyleBackColor = true;
 			this->button20->Click += gcnew System::EventHandler(this, &Form1::button20_Click);
 			// 
-			// power_n
-			// 
-			this->power_n->Location = System::Drawing::Point(260, 164);
-			this->power_n->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->power_n->Name = L"power_n";
-			this->power_n->Size = System::Drawing::Size(36, 22);
-			this->power_n->TabIndex = 14;
-			// 
 			// RowReduction
 			// 
 			this->RowReduction->Location = System::Drawing::Point(185, 288);
@@ -1169,10 +1192,10 @@ private: System::Windows::Forms::Label^  label24;
 			// 
 			// Power_a
 			// 
-			this->Power_a->Location = System::Drawing::Point(204, 164);
+			this->Power_a->Location = System::Drawing::Point(185, 162);
 			this->Power_a->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Power_a->Name = L"Power_a";
-			this->Power_a->Size = System::Drawing::Size(36, 22);
+			this->Power_a->Size = System::Drawing::Size(98, 22);
 			this->Power_a->TabIndex = 14;
 			// 
 			// transtbox
@@ -1201,19 +1224,6 @@ private: System::Windows::Forms::Label^  label24;
 			this->Mat_Label->TabIndex = 11;
 			this->Mat_Label->Text = L"Matrix";
 			this->Mat_Label->UseMnemonic = false;
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(128)));
-			this->label13->Location = System::Drawing::Point(240, 161);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(22, 25);
-			this->label13->TabIndex = 39;
-			this->label13->Text = L"^";
-			this->label13->UseMnemonic = false;
-			this->label13->Click += gcnew System::EventHandler(this, &Form1::label8_Click);
 			// 
 			// label22
 			// 
@@ -1296,9 +1306,9 @@ private: System::Windows::Forms::Label^  label24;
 				static_cast<System::Byte>(128)));
 			this->label12->Location = System::Drawing::Point(17, 161);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(181, 25);
+			this->label12->Size = System::Drawing::Size(165, 25);
 			this->label12->TabIndex = 39;
-			this->label12->Text = L"Power of Matrix";
+			this->label12->Text = L"Power Method";
 			this->label12->UseMnemonic = false;
 			this->label12->Click += gcnew System::EventHandler(this, &Form1::label8_Click);
 			// 
@@ -1327,27 +1337,6 @@ private: System::Windows::Forms::Label^  label24;
 			this->label11->Text = L"Transpose";
 			this->label11->UseMnemonic = false;
 			this->label11->Click += gcnew System::EventHandler(this, &Form1::label8_Click);
-			// 
-			// label24
-			// 
-			this->label24->AutoSize = true;
-			this->label24->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(128)));
-			this->label24->Location = System::Drawing::Point(560, 220);
-			this->label24->Name = L"label24";
-			this->label24->Size = System::Drawing::Size(229, 25);
-			this->label24->TabIndex = 39;
-			this->label24->Text = L"orthonormal basis of";
-			this->label24->UseMnemonic = false;
-			this->label24->Click += gcnew System::EventHandler(this, &Form1::label8_Click);
-			// 
-			// orthbox
-			// 
-			this->orthbox->Location = System::Drawing::Point(796, 223);
-			this->orthbox->Margin = System::Windows::Forms::Padding(4);
-			this->orthbox->Name = L"orthbox";
-			this->orthbox->Size = System::Drawing::Size(164, 22);
-			this->orthbox->TabIndex = 48;
 			// 
 			// Form1
 			// 
@@ -1382,6 +1371,27 @@ private: System::Windows::Forms::Label^  label24;
 			Marshal::FreeHGlobal(IntPtr((void*)chars));
 			return os;
 		}
+
+		void ans_add(String ^s){
+			s+="\n";
+			answer->Items->Clear();
+			String ^new_s="";
+			for(int i=0;i<s->Length;i++)
+			{
+				if(s[i]!='\n')
+					new_s+=s[i];
+				else
+				{
+					answer->Items->Add(new_s);
+					new_s="";
+				}
+			}
+
+
+
+
+		}
+
 		
 
 #pragma endregion
@@ -1645,7 +1655,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 		 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 			////normalize
-			 total->Text = std_to_System_string(vec->print_out((vec->normal(temp))));
+			 ans_add(std_to_System_string(vec->print_out((vec->normal(temp)))));
 			 
 
 		 }
@@ -1654,7 +1664,7 @@ private: System::Void textBox1_TextChanged(System::Object^  sender, System::Even
 private: System::Void Matrix_listBox_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-			 total->Text = std_to_System_string(vec->print_out((vec->magnitude(sum))));
+			ans_add(std_to_System_string(vec->print_out((vec->magnitude(sum)))));
 		 }
 private: System::Void total_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
@@ -1681,7 +1691,7 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 				
 				ans=vec->projection(tempa,tempb,ca,cb);
 				
-		   		total->Text=std_to_System_string(vec->print_out(ans));
+		   		ans_add(std_to_System_string(vec->print_out(ans)));
 				
 				 
 				
@@ -1693,6 +1703,7 @@ private: System::Void textBox4_TextChanged(System::Object^  sender, System::Even
 private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+			
 			  string sa=SYS_str_to_std(textBox5->Text); // 讀取Textbox的string
 			 string sb=SYS_str_to_std(textBox4->Text);// 讀取Textbox的string
 			 char ca=sa.at(0);// 讀取Textbox的char
@@ -1708,7 +1719,8 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 				
 				ans=vec->component(tempa,tempb,ca,cb);
 				
-		   		total->Text=""+ans;
+				ans_add(""+ans);
+		   		//total->Text=""+ans;
 		 }
 private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
 			 char a =  SYS_str_to_std(para->Text)[0];
@@ -1716,11 +1728,11 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 			 vector<double> tempa = vec->pop(1,a);
 			 vector<double> tempb = vec->pop(1,b);
 			 if(vec->parall(tempa,tempb))
-				 total->Text="Paraell";
+				ans_add("Paraell");
 			 else if(vec->orthogonal(tempa,tempb))
-				total->Text="Orthogoal";
+				ans_add("Orthogoal");
 			 else
-				total->Text="Banana";
+				ans_add("Banana");
 			 
 		 }
 private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1732,7 +1744,7 @@ private: System::Void button7_Click(System::Object^  sender, System::EventArgs^ 
 			 char b =   SYS_str_to_std(textBox7->Text)[0];
 			 vector<double> tempa = vec->pop(1,a);
 			 vector<double> tempb = vec->pop(1,b);
-			total->Text=""+(vec->area_of_parallelogram(tempa,tempb,a,b));
+			ans_add(""+(vec->area_of_parallelogram(tempa,tempb,a,b)));
 
 		 }
 private: System::Void textBox6_TextChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -1744,7 +1756,7 @@ private: System::Void button8_Click(System::Object^  sender, System::EventArgs^ 
 			 char b =   SYS_str_to_std(textBox7->Text)[0];
 			 vector<double> tempa = vec->pop(1,a);
 			 vector<double> tempb = vec->pop(1,b);
-			total->Text=""+(vec->area_of_triangle(tempa,tempb,a,b));
+			ans_add(""+(vec->area_of_triangle(tempa,tempb,a,b)));
 		 }
 private: System::Void textBox9_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
@@ -1755,14 +1767,14 @@ private: System::Void button9_Click(System::Object^  sender, System::EventArgs^ 
 			 char b =   SYS_str_to_std(textBox9->Text)[0];
 			 vector<double> tempa = vec->pop(1,a);
 			 vector<double> tempb = vec->pop(1,b);
-			total->Text=""+(vec->angle(tempa,tempb,a,b));
+			ans_add(""+(vec->angle(tempa,tempb,a,b)));
 		 }
 private: System::Void button10_Click(System::Object^  sender, System::EventArgs^  e) {
 			 char a =  SYS_str_to_std(textBox8->Text)[0];
 			 char b =   SYS_str_to_std(textBox9->Text)[0];
 			 vector<double> tempa = vec->pop(1,a);
 			 vector<double> tempb = vec->pop(1,b);
-			total->Text=""+((vec->angle(tempa,tempb,a,b))*180/PI);
+			ans_add(""+((vec->angle(tempa,tempb,a,b))*180/PI));
 		 }
 private: System::Void button20_Click(System::Object^  sender, System::EventArgs^  e) {
 			  string sa=SYS_str_to_std(martrix_input->Text); // 讀取Textbox的string
@@ -1860,14 +1872,14 @@ private: System::Void button20_Click(System::Object^  sender, System::EventArgs^
 				 if(temps.empty())
 				 {
 					 no_normal=true;
-					 Mat_Label->Text=std_to_System_string("Illegal operation!");
+					 ans_add(std_to_System_string("Illegal operation!"));
 				 }
 				 else
 				 {
 					 sum = temp;
 					 vector<vector<double>> tt=temps;
 
-					 Mat_Label->Text=std_to_System_string(mat->print_out(temps));
+					 ans_add(std_to_System_string(mat->print_out(temps)));
 				     //Mat_Label->Text=std_to_System_string(mat->print_out(mat->gaussian_elimination(temps)));
 
 				 }
@@ -1879,7 +1891,7 @@ private: System::Void button11_Click(System::Object^  sender, System::EventArgs^
 
 			 double norm=vec->p_norm(2,a);
 
-			 total->Text=""+norm;
+			ans_add(""+norm);
 			 
 
 		 }
@@ -1890,15 +1902,15 @@ private: System::Void label8_Click(System::Object^  sender, System::EventArgs^  
 private: System::Void transposbuttom_Click(System::Object^  sender, System::EventArgs^  e) {
 			 char b =   SYS_str_to_std(transtbox->Text)[0];
 			 vector<vector<double>> trans=mat->transpose(mat->pop(1,b));
-			 Mat_Label->Text=std_to_System_string(mat->print_out(trans));
+			ans_add(std_to_System_string(mat->print_out(trans)));
 		 }
 private: System::Void button14_Click(System::Object^  sender, System::EventArgs^  e) {
 			 button20_Click(sender,e);
 			 double det=mat->Determinant(temps);
 			 if(det==-9999)
-				 Mat_Label->Text="Must be NxN matrix.";
+				ans_add("Must be NxN matrix.");
 			 else
-				 Mat_Label->Text="Determinant : "+det;
+				ans_add("Determinant : "+det);
 
 		 }
 
@@ -1954,7 +1966,7 @@ private: System::Void button12_Click(System::Object^  sender, System::EventArgs^
 			 total->Text=std_to_System_string("Independent");
 			else if(err==0&&!vec->linear_indepen(mat->gaussian_elimination(matrix)))
 			  total->Text=std_to_System_string("dependent");
-			Mat_Label->Text = std_to_System_string(mat->print_out(mat->gaussian_elimination(matrix)));
+			ans_add(std_to_System_string(mat->print_out(mat->gaussian_elimination(matrix))));
 			 // }
 		 }
 		 private: System::Void button13_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1975,8 +1987,8 @@ private: System::Void button12_Click(System::Object^  sender, System::EventArgs^
 						  }
 						  i++;
 					  }
-					   Mat_Label->Text = std_to_System_string(mat->print_out(mat->gaussian_elimination(matrix)));
-					   total->Text="Rank is " + mat->rank(matrix);
+					  // Mat_Label->Text = std_to_System_string(mat->print_out(mat->gaussian_elimination(matrix)));
+					  ans_add("Rank is " + mat->rank(matrix));
 					
 
 				  }
@@ -1984,27 +1996,28 @@ private: System::Void adjoint_Click(System::Object^  sender, System::EventArgs^ 
 			 button20_Click(sender,e);
 			 vector<vector<double>> adjoint=mat->Adjoint(temps);
 			 if(adjoint.empty())
-				 Mat_Label->Text="Must be NxN matrix.";
+				ans_add("Must be NxN matrix.");
 			 else
-				 Mat_Label->Text=std_to_System_string(mat->print_out(adjoint));
+				ans_add(std_to_System_string(mat->print_out(adjoint)));
 
 		 }
 private: System::Void Inverse_Click(System::Object^  sender, System::EventArgs^  e) {
 			 button20_Click(sender,e);
 			 vector<vector<double>> Inverse=mat->Inverse(temps);
 			 if(Inverse.empty())
-				 Mat_Label->Text="Can not be Inversed.";
+				ans_add("Can not be Inversed.");
 			 else
-				 Mat_Label->Text=std_to_System_string(mat->print_out(Inverse));
+				ans_add(std_to_System_string(mat->print_out(Inverse)));
 		 }
 private: System::Void Power_Click(System::Object^  sender, System::EventArgs^  e) {
 			  char a =   SYS_str_to_std(Power_a->Text)[0];
-			  double n=System::Convert::ToDouble(power_n->Text);
-			  vector<vector<double>> po=mat->Power(n,mat->pop(1,a));
+			  vector<vector<double>> po=mat->PowEigen(mat->pop(1,a));
+			  double va=po[0][0];
+			  po.erase(po.begin());
 			  if(po.empty())
-				  Mat_Label->Text="Input error.";
+				 ans_add("Input error.");
 			  else
-				  Mat_Label->Text=std_to_System_string(mat->print_out(po));
+				 ans_add("eigen value: "+va+"\neigen vector: "+std_to_System_string(mat->print_out(po)));
 		 }
 private: System::Void Eigenvalue_Click(System::Object^  sender, System::EventArgs^  e) {
 			 button20_Click(sender,e);
@@ -2012,9 +2025,9 @@ private: System::Void Eigenvalue_Click(System::Object^  sender, System::EventArg
 
 			 vector<vector<double>> eigenvector = mat->eigenvector(eigennvalue,temps);
 			 if(eigennvalue.empty())
-				 Mat_Label->Text="Input error.";
+				ans_add("Input error.");
 			 else
-				 Mat_Label->Text=std_to_System_string(vec->print_out(eigennvalue))+"\n"+std_to_System_string(mat->print_out(eigenvector));
+				ans_add(std_to_System_string(vec->print_out(eigennvalue))+"\n"+std_to_System_string(mat->print_out(eigenvector)));
 
 		 }
 private: System::Void Liner_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -2022,9 +2035,9 @@ private: System::Void Liner_Click(System::Object^  sender, System::EventArgs^  e
 			 char y= SYS_str_to_std(Liner_y->Text)[0];
 			 vector<vector<double>> Liner=mat->LeastSquare(mat->pop(1,x),mat->pop(1,y));
 			 if(Liner.empty())
-				 Mat_Label->Text="Input error.";
+				ans_add("Input error.");
 			 else
-				 Mat_Label->Text=std_to_System_string(mat->print_out(Liner));
+				ans_add(std_to_System_string(mat->print_out(Liner)));
 			 
 
 
@@ -2034,9 +2047,9 @@ private: System::Void Scale_Click(System::Object^  sender, System::EventArgs^  e
 			 char n=SYS_str_to_std(scaleBoxn->Text)[0];
 			 vector<double> sca=vec->pop(vec->pop(1,n)[0],a);
 			 if(sca.empty())
-				 total->Text="Input error.";
+				ans_add("Input error.");
 			 else
-				 total->Text=std_to_System_string(vec->print_out(sca));
+				ans_add(std_to_System_string(vec->print_out(sca)));
 				
 		 }
 private: System::Void Solve_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -2044,25 +2057,25 @@ private: System::Void Solve_Click(System::Object^  sender, System::EventArgs^  e
 			 char b=SYS_str_to_std(solve_b->Text)[0];
 			 vector<double> solve=mat->solveliner(mat->pop(1,a),mat->pop(1,b));
 			 if(solve.empty())
-				 Mat_Label->Text="Input error.";
+				ans_add("Input error.");
 			 else
-				 Mat_Label->Text=std_to_System_string(vec->print_out(solve));
+				ans_add(std_to_System_string(vec->print_out(solve)));
 		 }
 private: System::Void upper_Click(System::Object^  sender, System::EventArgs^  e) {
 			  char a =   SYS_str_to_std(RowReduction->Text)[0];
 			  vector<vector<double>> upper=mat->UpperTri(mat->pop(1,a));
 			  if(upper.empty())
-				  Mat_Label->Text="Input error.";
+				 ans_add("Input error.");
 			  else
-				  Mat_Label->Text=std_to_System_string(mat->print_out(upper));
+				ans_add(std_to_System_string(mat->print_out(upper)));
 		 }
 private: System::Void lower_Click(System::Object^  sender, System::EventArgs^  e) {
 			 char a =   SYS_str_to_std(RowReduction->Text)[0];
 			 vector<vector<double>> upper=mat->DownTri(mat->pop(1,a));
 			 if(upper.empty())
-				 Mat_Label->Text="Input error.";
+				ans_add("Input error.");
 			 else
-				 Mat_Label->Text=std_to_System_string(mat->print_out(upper));
+				ans_add(std_to_System_string(mat->print_out(upper)));
 		 }
 private: System::Void orth_Click(System::Object^  sender, System::EventArgs^  e) {
 			 vector<vector<double>> matrix;
@@ -2085,9 +2098,9 @@ private: System::Void orth_Click(System::Object^  sender, System::EventArgs^  e)
 
 			 matrix=vec->OrthogonalBasis(matrix);
 			 if(matrix.empty())
-				 Mat_Label->Text="Input error.";
+				 ans_add("Input error.");
 			 else
-				 Mat_Label->Text=std_to_System_string(mat->print_out(matrix));
+				ans_add(std_to_System_string(mat->print_out(matrix)));
 		 }
 };
 }

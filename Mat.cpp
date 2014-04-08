@@ -51,7 +51,7 @@ string Mat::print_out(vector<vector<double>> a)
 	for (i=0;i<a.size();i++)
 	{
 		temp<<"¢x";
-		for(j=0;j<a[0].size()-1;j++)
+		for(j=0;j<a[i].size()-1;j++)
 		{
 			temp<<a[i][j];
 				temp<<"  ";
@@ -202,7 +202,7 @@ double Mat::Determinant(vector<vector<double>> ve) //Determinant
 	vector<vector<double>> mat;
 	vector<double> temp;
 	double det=0;
-	if(ve.size() != ve[0].size())
+	if(ve.empty()||ve.size() != ve[0].size())
 		return -9999;
 	if(ve.size()==1)
 		return ve[0][0];
@@ -375,14 +375,44 @@ vector<vector<double>> Mat::scale(double a,vector<vector<double>> ve) //	Scale M
 	
 }
 
-vector<vector<double>> Mat::Power(double n,vector<vector<double>> ve)
+vector<vector<double>> Mat::PowEigen(vector<vector<double>> mat)
 {
-	Mat *m=new Mat();
-	m->push(ve);
-	for(int i=1;i<n;i++)
-		m->M[0]=m->mul(1,'a',ve);
+	vector<vector<double>> x;
+	vector<vector<double>> axx,xx;
+	Mat *t = new Mat();
+	vector<double> one;
+	one.push_back(1.0);
+	for(int i =0;i<mat.size();i++)
+	{
+		x.push_back(one);
+	}
+	t->push(x);
+	for(int i=0;i<30;i++)
+	{
 
-	return m->M[0];
+		t->M[0]=t->mul(1,'a',mat);
+	}
+	double max=0;
+	
+	for(int i=0;i<x.size();i++)
+	{
+			if(t->M[0][i][0]>max)
+				max=t->M[0][i][0];
+	}
+	for(int i=0;i<x.size();i++)
+	{
+		t->M[0][i][0]/=max;
+	}
+	axx=t->mul(1,'a',mat);
+	axx=t->mul(1,'a',transpose(axx));
+	xx=t->mul(1,'a',transpose(t->M[0]));
+	x.clear();
+	one.clear();
+	one.push_back(axx[0][0]/xx[0][0]);
+	x.push_back(one);
+	x.push_back(transpose(t->M[0])[0]);
+
+	return x;
 }
 
 
@@ -439,7 +469,7 @@ vector<vector<double>> Mat::LeastSquare(vector<vector<double>> x,vector<vector<d
 vector<vector<double>>Mat::eigenvector(vector<double>val,vector<vector<double>>mat)
 {
 	vector<vector<double>> t;
-	double tx[3];
+	float tx[3];
 	vector<vector<double>> ans_vec;
 	vector<double> temp;
 	int k=0;
@@ -491,14 +521,22 @@ vector<vector<double>>Mat::eigenvector(vector<double>val,vector<vector<double>>m
 			}
 			temp.clear();
 			t=gaussian_elimination(t);
-			tx[2]=1;
-			tx[1]=-1*t[1][2]*tx[2]/t[1][1];
-			tx[0]=-1*(tx[1]*t[0][1]+tx[2]*t[0][2])/t[0][0];
+			tx[2]=t[1][1];
+			tx[1]=-t[1][2];
+			tx[0]=-1*(t[0][1]*tx[1]+t[0][2]*tx[2])/t[0][0];
+
 			temp.push_back(tx[0]);
 			temp.push_back(tx[1]);
 			temp.push_back(tx[2]);
+
 			temp=vec->normal(temp);
-			ans_vec.push_back(temp);
+			for(int i=0;i<3;i++)
+				if(abs(temp[i])<0.000001)
+				{
+					temp[i]=0;
+				}
+				ans_vec.push_back(temp);
+				temp.clear();
 		}
 	}
 	return ans_vec;
