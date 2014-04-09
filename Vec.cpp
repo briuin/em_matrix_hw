@@ -280,7 +280,7 @@ vector<double>Vec::cross(double a , unsigned char x , vector<double> ve )
 
 	for(int i =0 ;i<ve.size();i++)
 	{
-	  cro.push_back(S[index][(i+1)%div]*ve[(i+2)%div]-S[index][(i+2)%div]*ve[(i+1)%div]);
+		cro.push_back(pow(-1.0,i)*(ve[(i+1)%div]*S[index][(i+2)%div]-ve[(i+2)%div]*S[index][(i+1)%div]));
 	}
 
 	return cro;

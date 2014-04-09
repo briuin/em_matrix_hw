@@ -349,7 +349,7 @@ private: System::Windows::Forms::ListBox^  answer;
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
 			this->button1->ForeColor = System::Drawing::Color::Red;
-			this->button1->Location = System::Drawing::Point(283, 69);
+			this->button1->Location = System::Drawing::Point(279, 69);
 			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(96, 28);
@@ -1654,6 +1654,8 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				 }
 		 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 button1_Click(sender,e);
 			////normalize
 			 ans_add(std_to_System_string(vec->print_out((vec->normal(temp)))));
 			 
@@ -1664,6 +1666,7 @@ private: System::Void textBox1_TextChanged(System::Object^  sender, System::Even
 private: System::Void Matrix_listBox_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+			 button1_Click(sender,e);
 			ans_add(std_to_System_string(vec->print_out((vec->magnitude(sum)))));
 		 }
 private: System::Void total_Click(System::Object^  sender, System::EventArgs^  e) {
