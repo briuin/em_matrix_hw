@@ -8,7 +8,7 @@
 #include <sstream>
 #include "string.h"
 #include "Vec.h"
-
+#include <cstring>
 #define MAX 80
 using namespace std;
 
@@ -23,6 +23,7 @@ public:
 
 	string clearallstupidinput(string s);  //進階版清除字串空白
 	string scaler_to_addition(string s);//scaler換成加法
+	string Addedfunc::multiscaler_toone(string s);//例如3*3*3*3變成81
 	Addedfunc();
 	~Addedfunc();
 };

@@ -1,12 +1,28 @@
 
 #include <iostream>
 #include <vector>
+#include <stdio.h>
+#include <string.h>
+#include <cstring>
+#include <sstream>
 using namespace std;
 
 //儲存輸入的向量
 vector<double> *vecc;
 
+vector<double> dotproduct(double scal,vector<double> p1)
+{
+	vector<double> newp1;
+	for(int i= 0 ; i < p1.size() ; i++)
+	{
+			newp1.push_back(p1[i]*scal);
+	}
+	return newp1;
+}
+
+
 //各個運算子的優先權
+
 int priority(char op) { 
 	switch(op) { 
 	case '+': case '-': return 1;
@@ -63,7 +79,7 @@ vector<double> cal(char op, vector<double> p1, vector<double> p2) {
 std::string inToPostfix(std::string infix) { 
 	string postfix;
 	vector<char> stack;
-
+	double temp_scaler;
 	int j=0, top=0;
 	for(int i = 0 ; i < infix.size() ; i++) 
 	{
@@ -91,6 +107,20 @@ std::string inToPostfix(std::string infix) {
 				} 
 				stack.pop_back();  // 不輸出 ( 
 				break; 
+			/*case '0':case '1': case '2': case '3': case '4':
+			case '5':case '6': case '7': case '8': case '9': 
+				temp_scaler=0.0;
+				while(!(infix[i]>='a'&&infix[i]<='z'))
+				{
+					if(infix[i]!='.')
+					{
+						temp_scaler=temp_scaler*10+(int)infix[i]-(int)('0');
+					}
+					i++;
+				}
+				postfix += temp_scaler;
+				postfix += infix[i];
+				break;*/
 			default:  // 運算元直接輸出 
 				postfix += infix[i];
 		}		
@@ -114,6 +144,13 @@ std::string inToPostfix(std::string infix) {
 	for(int i = 0 ; i < PostVExpression.size() ; i++)
 	{
 		int top = v.size();
+		double scal_temp;
+		vector<double> scalvec_temp;
+		int scal_count=0;
+		char s_temp[1000];
+		bool is_scal=false;
+		bool single_scal=false;
+		stringstream ss1,ss2;
 		switch(PostVExpression[i]) { 
 		case '+': case '-': case '*': case '/':case 'x':
 			{
@@ -125,6 +162,41 @@ std::string inToPostfix(std::string infix) {
 				break;
 			}			
 		default: 
+			scal_temp=0.0;
+			is_scal=false;
+			single_scal=false;
+			scal_count=0;
+			if(!(PostVExpression[i]>='a'&&PostVExpression[i]<='z'))
+			{
+				is_scal=true;
+				while(!(PostVExpression[i+scal_count]>='a'&&PostVExpression[i+scal_count]<='z')&&PostVExpression[i+scal_count]!='*')
+				{
+					scal_count++;
+				}
+				if(PostVExpression[i+scal_count]=='*')
+				{
+					is_scal=false;
+					single_scal=true;
+				}
+				strncpy(s_temp,&PostVExpression[i],scal_count);
+				ss1<<s_temp;
+				ss1>>scal_temp;
+			}
+			while(!(PostVExpression[i]>='a'&&PostVExpression[i]<='z')&&PostVExpression[i]!='*')
+			{
+					i++;
+			}
+			if(is_scal)
+			v.push_back(dotproduct(scal_temp,vecc[PostVExpression[i]-97]));
+			else if(single_scal)
+			{
+				scalvec_temp=v[v.size()-1];
+				v.pop_back();
+				v.push_back(dotproduct(scal_temp,scalvec_temp));
+				
+				i++;
+			}
+			else
 			v.push_back(vecc[PostVExpression[i]-97]);
 		}
 	}
