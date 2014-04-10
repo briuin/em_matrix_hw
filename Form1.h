@@ -1418,7 +1418,7 @@ private: System::Windows::Forms::ListBox^  answer;
 				
 					 char a ;
 					 o_file >> a ;
-					 vecc = new vector<float> [vecNUM];
+					 vecc = new vector<double> [vecNUM];
 				 while(o_file!=NULL)
 				 {
 
@@ -1438,7 +1438,7 @@ private: System::Windows::Forms::ListBox^  answer;
 
 						 //開始讀取Vector的值
 						 String ^s ;
-						  vector<float> tmpvec;
+						  vector<double> tmpvec;
 						 for( int k=0 ; k<d ; k++)
 						 {
 							 double val ;//用int去讀取vector的值...之後或許會有小數點的值，請改用float
@@ -1534,10 +1534,10 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			 //中轉後http://openhome.cc/Gossip/AlgorithmGossip/InFixPostfix.htm
 			 //後序式運算http://openhome.cc/Gossip/AlgorithmGossip/PostfixCal.htm
 			 std::string PostVExpression;
-			 PostVExpression = inToPostfix(VExpression);
+			 PostVExpression = inToPostfix(addedfunc->clearallstupidinput(VExpression));
 
 			 //利用後序式作向量運算
-			 vector<float> OpVec = eval(PostVExpression);
+			 vector<double> OpVec = eval(PostVExpression);
 			 String ^s = gcnew String("");
 			 for(int i=0;i<OpVec.size();i++)
 			 {
@@ -1648,7 +1648,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				 {
 					 sum = temp;
 					 //total->Text=std_to_System_string(vec->print_out(temp));
-					 
+					 temp=OpVec;
 					 total->Text=s;
 					
 				 }
