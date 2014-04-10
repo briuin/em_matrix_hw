@@ -1646,10 +1646,10 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				 }
 				 else*/
 				 {
-					 sum = temp;
+					 
 					 //total->Text=std_to_System_string(vec->print_out(temp));
 					 temp=OpVec;
-					 total->Text=s;
+					 ans_add(s);
 					
 				 }
 		 }
@@ -1667,7 +1667,7 @@ private: System::Void Matrix_listBox_SelectedIndexChanged(System::Object^  sende
 		 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 button1_Click(sender,e);
-			ans_add(std_to_System_string(vec->print_out((vec->magnitude(sum)))));
+			ans_add(std_to_System_string(vec->print_out((vec->magnitude(temp)))));
 		 }
 private: System::Void total_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
