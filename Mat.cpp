@@ -287,7 +287,7 @@ vector<vector<double>> Mat::gaussian_elimination(vector<vector<double>> mat)
 }
 int Mat::rank(vector<vector<double>> mat)
 {   vector<double> zero;
-    int count=0;
+    int count=mat.size();
     for(int i =0;i<mat[0].size();i++)
 	{
       zero.push_back(0);
@@ -295,8 +295,8 @@ int Mat::rank(vector<vector<double>> mat)
 	mat = gaussian_elimination(mat);
 	for(int i =0;i<mat.size();i++)
 	{
-	 if(mat[0]!=zero)
-		 count++;
+	 if(mat[i]==zero)
+		 count--;
 	}
 	return count;
 }
