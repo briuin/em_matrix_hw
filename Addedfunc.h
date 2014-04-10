@@ -22,7 +22,7 @@ public:
 	string erase_space(string s);   //清除字串空白處
 
 	string clearallstupidinput(string s);  //進階版清除字串空白
-	
+	string scaler_to_addition(string s);//scaler換成加法
 	Addedfunc();
 	~Addedfunc();
 };
