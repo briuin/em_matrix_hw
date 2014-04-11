@@ -52,13 +52,26 @@ vector<double> cal(char op, vector<double> p1, vector<double> p2) {
 		break;
 	
 	case '*': 
-		dotResult = 0;
-		for(int i= 0 ; i < p1.size() ; i++)
+		if(p1.size()==1)
 		{
-			dotResult+=p1[i]*p2[i];
+			p1p2.clear();
+			p1p2=dotproduct(p1[0],p2);
 		}
-		p1p2.clear();
-		p1p2.push_back(dotResult);
+		else if(p2.size()==1)
+		{
+			p1p2.clear();
+			p1p2=dotproduct(p2[0],p1);
+		}
+		else
+		{
+			dotResult = 0;
+			for(int i= 0 ; i < p1.size() ; i++)
+			{
+				dotResult+=p1[i]*p2[i];
+			}
+			p1p2.clear();
+			p1p2.push_back(dotResult);
+		}
 		return p1p2; 
 		break;
 	case 'x':

@@ -278,7 +278,11 @@ vector<vector<double>> Mat::gaussian_elimination(vector<vector<double>> mat)
 		{
 			double t = mat[j][i];
 			for (int k=i; k<mat[0].size(); k++)
-				mat[j][k] -= mat[i][k] * t;
+			{
+			mat[j][k] -= mat[i][k] * t;
+			if(abs(mat[j][k])<0.000001)
+				mat[j][k]=0;
+			}
 		}
 
    }

@@ -1649,6 +1649,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 					 
 					 //total->Text=std_to_System_string(vec->print_out(temp));
 					 temp=OpVec;
+					 //ans_add(std_to_System_string(addedfunc->clearallstupidinput(VExpression)));
 					 //ans_add(std_to_System_string(PostVExpression));
 					 ans_add(s);
 					
