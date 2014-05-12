@@ -43,6 +43,7 @@ public:
 	bool  parall(vector<double>a , vector<double> b);
 	bool  orthogonal(vector<double>a,vector<double>b);
 	double p_norm(double a,unsigned char b);
+	double p_norm2(double a,vector<double> b);
 	bool linear_indepen(vector<vector<double>> mat);
 	vector<vector<double>> OrthogonalBasis(vector<vector<double>>  ve);
 	int i,j;

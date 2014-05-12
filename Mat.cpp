@@ -153,6 +153,10 @@ vector<vector<double>> Mat::mul(double a,unsigned char x,vector<vector<double>> 
 		index_x=x-'a';
 	else
 		index_x=x-'A';
+	if(ve.size()==1&&ve[0].size()==1)
+	{
+		return scale(ve[0][0],M[index_x]);
+	}
 
 
 	if ((unsigned)index_x>=M.size() || M[index_x].size()!=ve[0].size() )
