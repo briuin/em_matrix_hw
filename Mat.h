@@ -25,6 +25,9 @@ public:
 	string print_out(vector<vector<double>> a);  //印出陣列
 	vector<vector<double>> add(double a,unsigned char x,double b,unsigned char y);  //加法
 	vector<vector<double>> add(double a,unsigned char x,vector<vector<double>> ve);
+	vector<vector<double>> add2(vector<vector<double>> v0,vector<vector<double>> ve);
+	vector<vector<double>> dec2(vector<vector<double>> v0,vector<vector<double>> ve);
+	vector<vector<double>> mul2(vector<vector<double>> v0,vector<vector<double>> ve);
 	vector<vector<double>> dec(double a,unsigned char x,vector<vector<double>> ve);  //減法
 	vector<vector<double>> mul(double a,unsigned char x,vector<vector<double>> ve);  //乘法
 	vector<vector<double>> transpose(vector<vector<double>> ve); //	Matrix Transpose

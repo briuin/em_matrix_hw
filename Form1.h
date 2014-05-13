@@ -14,6 +14,13 @@
 #include "Mat.h"
 #include "vectorOP.h"
 #define PI 3.141592653589793238462643383
+#define NOPE ' '
+#define ADD '+'
+#define SUB '-'
+#define MUL '*'
+#define DOT '*'
+#define CRO 'x'
+#define SCA 'k'
 namespace Matrix_HW {
 
 	using namespace System;
@@ -32,6 +39,7 @@ namespace Matrix_HW {
 	 double tempvalue;
 	 bool sumvec=false;
 	 bool sumvalue=false;
+	 char openow=' ';
 	 Mat *mat=new Mat();
 	/// <summary>
 	/// Summary for Form1
@@ -176,6 +184,8 @@ private: System::Windows::Forms::Button^  button26;
 
 private: System::Windows::Forms::Button^  button28;
 private: System::Windows::Forms::Button^  button29;
+private: System::Windows::Forms::Button^  button27;
+private: System::Windows::Forms::Button^  button30;
 
 
 
@@ -247,6 +257,7 @@ private: System::Windows::Forms::Button^  button29;
 			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->button27 = (gcnew System::Windows::Forms::Button());
 			this->button24 = (gcnew System::Windows::Forms::Button());
 			this->button23 = (gcnew System::Windows::Forms::Button());
 			this->button22 = (gcnew System::Windows::Forms::Button());
@@ -269,6 +280,7 @@ private: System::Windows::Forms::Button^  button29;
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->button14 = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->button30 = (gcnew System::Windows::Forms::Button());
 			this->button25 = (gcnew System::Windows::Forms::Button());
 			this->button26 = (gcnew System::Windows::Forms::Button());
 			this->button18 = (gcnew System::Windows::Forms::Button());
@@ -743,6 +755,7 @@ private: System::Windows::Forms::Button^  button29;
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->button27);
 			this->groupBox2->Controls->Add(this->button24);
 			this->groupBox2->Controls->Add(this->button23);
 			this->groupBox2->Controls->Add(this->button22);
@@ -803,6 +816,19 @@ private: System::Windows::Forms::Button^  button29;
 			this->groupBox2->TabIndex = 45;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Vector";
+			// 
+			// button27
+			// 
+			this->button27->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->button27->ForeColor = System::Drawing::Color::Red;
+			this->button27->Location = System::Drawing::Point(763, 244);
+			this->button27->Margin = System::Windows::Forms::Padding(5, 3, 5, 3);
+			this->button27->Name = L"button27";
+			this->button27->Size = System::Drawing::Size(71, 45);
+			this->button27->TabIndex = 55;
+			this->button27->Text = L"C";
+			this->button27->UseVisualStyleBackColor = true;
+			this->button27->Click += gcnew System::EventHandler(this, &Form1::button27_Click);
 			// 
 			// button24
 			// 
@@ -1056,6 +1082,7 @@ private: System::Windows::Forms::Button^  button29;
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->button30);
 			this->groupBox3->Controls->Add(this->button25);
 			this->groupBox3->Controls->Add(this->button26);
 			this->groupBox3->Controls->Add(this->button18);
@@ -1100,6 +1127,19 @@ private: System::Windows::Forms::Button^  button29;
 			this->groupBox3->TabIndex = 46;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"matrix";
+			// 
+			// button30
+			// 
+			this->button30->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 12, System::Drawing::FontStyle::Bold));
+			this->button30->ForeColor = System::Drawing::Color::Red;
+			this->button30->Location = System::Drawing::Point(910, 228);
+			this->button30->Margin = System::Windows::Forms::Padding(5, 3, 5, 3);
+			this->button30->Name = L"button30";
+			this->button30->Size = System::Drawing::Size(71, 45);
+			this->button30->TabIndex = 56;
+			this->button30->Text = L"C";
+			this->button30->UseVisualStyleBackColor = true;
+			this->button30->Click += gcnew System::EventHandler(this, &Form1::button30_Click);
 			// 
 			// button25
 			// 
@@ -1862,9 +1902,56 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 
 			 string sa=SYS_str_to_std(textBox2->Text); // 讀取Textbox的string
 			 string sb=SYS_str_to_std(textBox3->Text);// 讀取Textbox的string
-			 vector<double> tempa,tempb,ans;
+			 vector<double> tempa,tempb,ans,tempans;
 			 double magb,compans;
 			 char ca,cb;
+			 if(openow!=NOPE)
+			 {
+				 ca=sa.at(0);// 讀取Textbox的char
+				 cb=sb.at(0);// 讀取Textbox的char
+				 vector<double> tempa,tempb;
+				 double sca=0;
+						char thechar,thecharb;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempa=vec->pop(sca,thechar); 
+						sca=0;
+						for(int i=0;i<sb.length();i++)
+						{
+							if(!(sb.at(i)>='0'&&sb.at(i)<='9'))
+							{
+								thecharb=sb.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sb.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempb=vec->pop(sca,thecharb); 
+						tempans=vec->projection(tempa,tempb,thechar,thecharb);
+						
+						
+							tempans=cal(openow,temp,tempans);
+				
+				 temp.clear();
+				 temp=tempans;
+				 ans_add(std_to_System_string(vec->print_out(tempans)));
+				 openow=NOPE;
+				 total->Text="NoN";
+			 }
+			 else
+			 {
 			 if(sa=="")
 			 {
 				 cb=sb.at(0);// 讀取Textbox的char
@@ -1891,7 +1978,7 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 			temps.clear();
 			temp=ans;
 			ans_add(std_to_System_string(vec->print_out(ans)));
-				
+			 }
 		 }
 private: System::Void textBox5_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
@@ -1904,8 +1991,61 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 			  string sa=SYS_str_to_std(textBox5->Text); // 讀取Textbox的string
 			 string sb=SYS_str_to_std(textBox4->Text);// 讀取Textbox的string
 			 double magb,ans;
+			 vector<double> tempans;
 			 char ca;
 			 char cb;
+			 if(openow!=NOPE)
+			 {
+				 ca=sa.at(0);// 讀取Textbox的char
+				 cb=sb.at(0);// 讀取Textbox的char
+				 vector<double> tempa,tempb;
+				 double sca=0;
+						char thechar,thecharb;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempa=vec->pop(sca,thechar); 
+						sca=0;
+						for(int i=0;i<sb.length();i++)
+						{
+							if(!(sb.at(i)>='0'&&sb.at(i)<='9'))
+							{
+								thecharb=sb.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sb.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempb=vec->pop(sca,thecharb); 
+						ans=vec->component(tempa,tempb,thechar,thecharb);
+						tempa.clear();
+						tempa.push_back(ans);
+						if(openow==SCA)
+						{	
+							tempans=dotproduct(ans,temp);
+						}
+						else
+							tempans=cal(openow,temp,tempa);
+				
+				 temp.clear();
+				 temp=tempans;
+				 ans_add(std_to_System_string(vec->print_out(tempans)));
+				 openow=NOPE;
+				 total->Text="NoN";
+			 }
+			 else
+			 {
 			 if(sa=="")
 			 {
 				  cb=sb.at(0);// 讀取Textbox的char
@@ -1934,6 +2074,7 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 			 temps.clear();
 			 temp.push_back(ans);
 			 ans_add(""+ans);
+			 }
 		 }
 private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
 			 char a =  SYS_str_to_std(para->Text)[0];
@@ -1954,7 +2095,63 @@ private: System::Void label6_Click(System::Object^  sender, System::EventArgs^  
 		 }
 private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
 			 char a,b;
-			 vector<double> tempa,tempb;
+			 vector<double> tempa,tempb,tempans;
+			 double ans;
+			 if(openow!=NOPE)
+			 {
+				  string sa=SYS_str_to_std(textBox6->Text); // 讀取Textbox的string
+				 string sb=SYS_str_to_std(textBox7->Text);// 讀取Textbox的string
+				 char ca,cb;
+				 ca=sa.at(0);// 讀取Textbox的char
+				 cb=sb.at(0);// 讀取Textbox的char
+				 vector<double> tempa,tempb;
+				 double sca=0;
+						char thechar,thecharb;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempa=vec->pop(sca,thechar); 
+						sca=0;
+						for(int i=0;i<sb.length();i++)
+						{
+							if(!(sb.at(i)>='0'&&sb.at(i)<='9'))
+							{
+								thecharb=sb.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sb.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempb=vec->pop(sca,thecharb); 
+						ans=vec->area_of_parallelogram(tempa,tempb,thechar,thecharb);
+						tempa.clear();
+						tempa.push_back(ans);
+						if(openow==SCA)
+						{	
+							tempans=dotproduct(ans,temp);
+						}
+						else
+							tempans=cal(openow,temp,tempa);
+				
+				 temp.clear();
+				 temp=tempans;
+				 ans_add(std_to_System_string(vec->print_out(tempans)));
+				 openow=NOPE;
+				 total->Text="NoN";
+			 }
+			 else
+			 {
 			 if(SYS_str_to_std(textBox6->Text)=="")
 			 {
 				  b =   SYS_str_to_std(textBox7->Text)[0];
@@ -1973,7 +2170,7 @@ private: System::Void button7_Click(System::Object^  sender, System::EventArgs^ 
 			 temp.clear();
 				  temp.push_back(vec->area_of_parallelogram(tempa,tempb,a,b));
 			 }
-			
+			 }
 
 		 }
 private: System::Void textBox6_TextChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -1982,7 +2179,63 @@ private: System::Void textBox7_TextChanged(System::Object^  sender, System::Even
 		 }
 private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
 			 char a,b;
-			 vector<double> tempa,tempb;
+			 vector<double> tempa,tempb,tempans;
+			 double ans;
+			 if(openow!=NOPE)
+			 {
+				  string sa=SYS_str_to_std(textBox6->Text); // 讀取Textbox的string
+				 string sb=SYS_str_to_std(textBox7->Text);// 讀取Textbox的string
+				 char ca,cb;
+				 ca=sa.at(0);// 讀取Textbox的char
+				 cb=sb.at(0);// 讀取Textbox的char
+				 vector<double> tempa,tempb;
+				 double sca=0;
+						char thechar,thecharb;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempa=vec->pop(sca,thechar); 
+						sca=0;
+						for(int i=0;i<sb.length();i++)
+						{
+							if(!(sb.at(i)>='0'&&sb.at(i)<='9'))
+							{
+								thecharb=sb.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sb.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempb=vec->pop(sca,thecharb); 
+						ans=vec->area_of_triangle(tempa,tempb,thechar,thecharb);
+						tempa.clear();
+						tempa.push_back(ans);
+						if(openow==SCA)
+						{	
+							tempans=dotproduct(ans,temp);
+						}
+						else
+							tempans=cal(openow,temp,tempa);
+				
+				 temp.clear();
+				 temp=tempans;
+				 ans_add(std_to_System_string(vec->print_out(tempans)));
+				 openow=NOPE;
+				 total->Text="NoN";
+			 }
+			 else
+			 {
 			 if(SYS_str_to_std(textBox6->Text)=="")
 			 {
 				 b =   SYS_str_to_std(textBox7->Text)[0];
@@ -2001,6 +2254,7 @@ private: System::Void button8_Click(System::Object^  sender, System::EventArgs^ 
 			temp.clear();
 				temp.push_back(vec->area_of_triangle(tempa,tempb,a,b));
 			 }
+			 }
 		 }
 private: System::Void textBox9_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
@@ -2008,7 +2262,63 @@ private: System::Void textBox8_TextChanged(System::Object^  sender, System::Even
 		 }
 private: System::Void button9_Click(System::Object^  sender, System::EventArgs^  e) {
 			 char a,b;
-			 vector<double> tempa,tempb;
+			 vector<double> tempa,tempb,tempans;
+			 double ans;
+			 if(openow!=NOPE)
+			 {
+				  string sa=SYS_str_to_std(textBox8->Text); // 讀取Textbox的string
+				 string sb=SYS_str_to_std(textBox9->Text);// 讀取Textbox的string
+				 char ca,cb;
+				 ca=sa.at(0);// 讀取Textbox的char
+				 cb=sb.at(0);// 讀取Textbox的char
+				 vector<double> tempa,tempb;
+				 double sca=0;
+						char thechar,thecharb;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempa=vec->pop(sca,thechar); 
+						sca=0;
+						for(int i=0;i<sb.length();i++)
+						{
+							if(!(sb.at(i)>='0'&&sb.at(i)<='9'))
+							{
+								thecharb=sb.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sb.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempb=vec->pop(sca,thecharb); 
+						ans=vec->angle(tempa,tempb,thechar,thecharb);
+						tempa.clear();
+						tempa.push_back(ans);
+						if(openow==SCA)
+						{	
+							tempans=dotproduct(ans,temp);
+						}
+						else
+							tempans=cal(openow,temp,tempa);
+				
+				 temp.clear();
+				 temp=tempans;
+				 ans_add(std_to_System_string(vec->print_out(tempans)));
+				 openow=NOPE;
+				 total->Text="NoN";
+			 }
+			 else
+			 {
 			 if(SYS_str_to_std(textBox8->Text)=="")
 			 {
 				  b =   SYS_str_to_std(textBox9->Text)[0];
@@ -2027,10 +2337,68 @@ private: System::Void button9_Click(System::Object^  sender, System::EventArgs^ 
 			temp.clear();
 				  temp.push_back(vec->angle(tempa,tempb,a,b));
 			 }
+			 }
 		 }
 private: System::Void button10_Click(System::Object^  sender, System::EventArgs^  e) {
 			char a,b;
-			 vector<double> tempa,tempb;
+			 vector<double> tempa,tempb,tempans;
+			 double ans;
+			  if(openow!=NOPE)
+			 {
+				  string sa=SYS_str_to_std(textBox8->Text); // 讀取Textbox的string
+				 string sb=SYS_str_to_std(textBox9->Text);// 讀取Textbox的string
+				 char ca,cb;
+				 ca=sa.at(0);// 讀取Textbox的char
+				 cb=sb.at(0);// 讀取Textbox的char
+				 vector<double> tempa,tempb;
+				 double sca=0;
+						char thechar,thecharb;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempa=vec->pop(sca,thechar); 
+						sca=0;
+						for(int i=0;i<sb.length();i++)
+						{
+							if(!(sb.at(i)>='0'&&sb.at(i)<='9'))
+							{
+								thecharb=sb.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sb.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempb=vec->pop(sca,thecharb); 
+						ans=vec->angle(tempa,tempb,thechar,thecharb);
+						ans=ans*180/PI;
+						tempa.clear();
+						tempa.push_back(ans);
+						if(openow==SCA)
+						{	
+							tempans=dotproduct(ans,temp);
+						}
+						else
+							tempans=cal(openow,temp,tempa);
+				
+				 temp.clear();
+				 temp=tempans;
+				 ans_add(std_to_System_string(vec->print_out(tempans)));
+				 openow=NOPE;
+				 total->Text="NoN";
+			 }
+			  else
+			  {
 			 if(SYS_str_to_std(textBox8->Text)=="")
 			 {
 				  b =   SYS_str_to_std(textBox9->Text)[0];
@@ -2049,6 +2417,7 @@ private: System::Void button10_Click(System::Object^  sender, System::EventArgs^
 			temp.clear();
 				  temp.push_back(vec->angle(tempa,tempb,a,b)*180/PI);
 			 }
+			  }
 		 }
 private: System::Void button20_Click(System::Object^  sender, System::EventArgs^  e) {
 			  string sa=SYS_str_to_std(martrix_input->Text); // 讀取Textbox的string
@@ -2160,6 +2529,48 @@ private: System::Void button20_Click(System::Object^  sender, System::EventArgs^
 
 		 }
 private: System::Void button11_Click(System::Object^  sender, System::EventArgs^  e) {
+			 vector<double> tempans;
+			 double ans;
+			  if(openow!=NOPE)
+			 {
+				  string sa=SYS_str_to_std(textBox10->Text); // 讀取Textbox的string
+				 char ca,cb;
+				 ca=sa.at(0);// 讀取Textbox的char
+				 vector<double> tempa,tempb;
+				 double sca=0;
+						char thechar,thecharb;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						}
+						if(sca==0)sca=1;
+						tempa=vec->pop(sca,thechar); 
+ 
+						ans=vec->p_norm2(2,tempa);
+						tempa.clear();
+						tempa.push_back(ans);
+						if(openow==SCA)
+						{	
+							tempans=dotproduct(ans,temp);
+						}
+						else
+							tempans=cal(openow,temp,tempa);
+				
+				 temp.clear();
+				 temp=tempans;
+				 ans_add(std_to_System_string(vec->print_out(tempans)));
+				 openow=NOPE;
+				 total->Text="NoN";
+			 }
+			  else
+			  {
 			 if(SYS_str_to_std(textBox10->Text)=="")
 			 {
 				  double norm=vec->p_norm2(2,temp);
@@ -2179,7 +2590,7 @@ private: System::Void button11_Click(System::Object^  sender, System::EventArgs^
 				temp.push_back(norm);
 			 }
 			 
-			 
+			  }
 
 		 }
 
@@ -2187,6 +2598,39 @@ private: System::Void label8_Click(System::Object^  sender, System::EventArgs^  
 		 }
 
 private: System::Void transposbuttom_Click(System::Object^  sender, System::EventArgs^  e) {
+			  if(openow!=NOPE)
+			 {
+				 string sa=SYS_str_to_std(transtbox->Text);
+				 double sca=0,ans;
+				 vector<vector<double>> tempans;
+						char thechar;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						} 
+						if(sca==0)sca=1;
+						tempans=mat->transpose(mat->pop(sca,thechar));
+						if(openow==ADD)
+							temps=mat->add2(temps,tempans);
+						else if(openow==SUB)
+							temps=mat->dec2(temps,tempans);
+						else if(openow==MUL)
+							temps=mat->mul2(temps,tempans);
+						else if(openow==SCA)
+							temps=mat->scale(ans,temps);
+						total->Text="NoN";
+						openow=NOPE;
+						ans_add(std_to_System_string(mat->print_out(temps)));
+			 }
+			  else
+			  {
 			 vector<vector<double>> trans;
 			 if(SYS_str_to_std(transtbox->Text)=="")
 			 {
@@ -2201,9 +2645,42 @@ private: System::Void transposbuttom_Click(System::Object^  sender, System::Even
 
 			temps.clear();
 			temps = trans;
+			  }
 		 }
 private: System::Void button14_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //button20_Click(sender,e);
+			 if(openow!=NOPE)
+			 {
+				 string sa=SYS_str_to_std(martrix_input->Text);
+				 double sca=0,ans;
+						char thechar;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						} 
+						if(sca==0)sca=1;
+						ans=mat->Determinant(mat->pop(sca,thechar));
+						if(openow==ADD)
+							temps=mat->add(sca,thechar,temps);
+						else if(openow==SUB)
+							temps=mat->dec(sca,thechar,temps);
+						else if(openow==MUL)
+							temps=mat->mul(sca,thechar,temps);
+						else if(openow==SCA)
+							temps=mat->scale(ans,temps);
+						total->Text="NoN";
+						openow=NOPE;
+						ans_add(std_to_System_string(mat->print_out(temps)));
+			 }
+			 else
+			 {
 			 double det=mat->Determinant(temps);
 			 if(det==-9999)
 				ans_add("Must be NxN matrix.");
@@ -2213,6 +2690,7 @@ private: System::Void button14_Click(System::Object^  sender, System::EventArgs^
 			 temp.push_back(det);
 			 temps.clear();
 			 temps.push_back(temp);
+			 }
 
 		 }
 
@@ -2272,6 +2750,39 @@ private: System::Void button12_Click(System::Object^  sender, System::EventArgs^
 			 // }
 		 }
 		 private: System::Void button13_Click(System::Object^  sender, System::EventArgs^  e) {
+					  if(openow!=NOPE)
+			 {
+				 string sa=SYS_str_to_std(rank_text->Text);
+				 double sca=0,ans;
+				 vector<vector<double>> tempans;
+						char thechar;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						} 
+						if(sca==0)sca=1;
+						ans=mat->rank(mat->pop(sca,thechar));
+						if(openow==ADD)
+							temps=mat->add2(temps,tempans);
+						else if(openow==SUB)
+							temps=mat->dec2(temps,tempans);
+						else if(openow==MUL)
+							temps=mat->mul2(temps,tempans);
+						else if(openow==SCA)
+							temps=mat->scale(ans,temps);
+						total->Text="NoN";
+						openow=NOPE;
+						ans_add(std_to_System_string(mat->print_out(temps)));
+			 }
+					  else
+					  {
 					 vector<vector<double>> matrix;
 					 string sa=SYS_str_to_std(rank_text->Text); // 讀取Textbox的string
 					 if(sa=="")
@@ -2303,11 +2814,44 @@ private: System::Void button12_Click(System::Object^  sender, System::EventArgs^
 					  temp.push_back( mat->rank(matrix));
 					  temps.clear();
 					  temps.push_back(temp);
-					
+					  }
 
 				  }
 private: System::Void adjoint_Click(System::Object^  sender, System::EventArgs^  e) {
 			// button20_Click(sender,e);
+			 if(openow!=NOPE)
+			 {
+				 string sa=SYS_str_to_std(martrix_input->Text);
+				 double sca=0,ans;
+				 vector<vector<double>> tempans;
+						char thechar;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						} 
+						if(sca==0)sca=1;
+						tempans=mat->Adjoint(mat->pop(sca,thechar));
+						if(openow==ADD)
+							temps=mat->add2(temps,tempans);
+						else if(openow==SUB)
+							temps=mat->dec2(temps,tempans);
+						else if(openow==MUL)
+							temps=mat->mul2(temps,tempans);
+						else if(openow==SCA)
+							temps=mat->scale(ans,temps);
+						total->Text="NoN";
+						openow=NOPE;
+						ans_add(std_to_System_string(mat->print_out(temps)));
+			 }
+			 else
+			 {
 			 vector<vector<double>> adjoint=mat->Adjoint(temps);
 			 if(adjoint.empty())
 				ans_add("Must be NxN matrix.");
@@ -2315,10 +2859,44 @@ private: System::Void adjoint_Click(System::Object^  sender, System::EventArgs^ 
 				ans_add(std_to_System_string(mat->print_out(adjoint)));
 			 temps.clear();
 			 temps=adjoint;
+			 }
 
 		 }
 private: System::Void Inverse_Click(System::Object^  sender, System::EventArgs^  e) {
 			// button20_Click(sender,e);
+			 if(openow!=NOPE)
+			 {
+				 string sa=SYS_str_to_std(martrix_input->Text);
+				 double sca=0,ans;
+				 vector<vector<double>> tempans;
+						char thechar;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						} 
+						if(sca==0)sca=1;
+						tempans=mat->Inverse(mat->pop(sca,thechar));
+						if(openow==ADD)
+							temps=mat->add2(temps,tempans);
+						else if(openow==SUB)
+							temps=mat->dec2(temps,tempans);
+						else if(openow==MUL)
+							temps=mat->mul2(temps,tempans);
+						else if(openow==SCA)
+							temps=mat->scale(ans,temps);
+						total->Text="NoN";
+						openow=NOPE;
+						ans_add(std_to_System_string(mat->print_out(temps)));
+			 }
+			 else
+			 {
 			 vector<vector<double>> Inverse=mat->Inverse(temps);
 			 if(Inverse.empty())
 				ans_add("Can not be Inversed.");
@@ -2327,6 +2905,7 @@ private: System::Void Inverse_Click(System::Object^  sender, System::EventArgs^ 
 			 
 			 temps.clear();
 			 temps=Inverse;
+			 }
 		 }
 private: System::Void Power_Click(System::Object^  sender, System::EventArgs^  e) {
 			  char a =   SYS_str_to_std(Power_a->Text)[0];
@@ -2351,6 +2930,53 @@ private: System::Void Eigenvalue_Click(System::Object^  sender, System::EventArg
 			 temps=eigenvector;
 		 }
 private: System::Void Liner_Click(System::Object^  sender, System::EventArgs^  e) {
+			  if(openow!=NOPE)
+			 {
+				 string sa=SYS_str_to_std(Liner_x->Text);
+				 string sb=SYS_str_to_std(Liner_y->Text);
+				 double sca=0,ans,scab=0;
+				 vector<vector<double>> tempans;
+						char thechar,thecharb;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						} 
+						if(sca==0)sca=1;
+					
+						for(int i=0;i<sb.length();i++)
+						{
+							if(!(sb.at(i)>='0'&&sb.at(i)<='9'))
+							{
+								thecharb=sb.at(i);
+							}
+							else
+							{
+								scab=scab*10+(int)sb.at(i)-(int)('0');
+							}
+						} 
+						if(scab==0)scab=1;
+						tempans=mat->LeastSquare(mat->pop(sca,thechar),mat->pop(scab,thecharb));
+						if(openow==ADD)
+							temps=mat->add2(temps,tempans);
+						else if(openow==SUB)
+							temps=mat->dec2(temps,tempans);
+						else if(openow==MUL)
+							temps=mat->mul2(temps,tempans);
+						else if(openow==SCA)
+							temps=mat->scale(ans,temps);
+						total->Text="NoN";
+						openow=NOPE;
+						ans_add(std_to_System_string(mat->print_out(temps)));
+			 }
+			  else
+			  {
 			 char x,y;
 			 vector<vector<double>> Liner;
 			 if(SYS_str_to_std(Liner_x->Text)=="")
@@ -2370,7 +2996,7 @@ private: System::Void Liner_Click(System::Object^  sender, System::EventArgs^  e
 				ans_add(std_to_System_string(mat->print_out(Liner)));
 			 temps.clear();
 			 temps=Liner;
-
+			  }
 
 		 }
 private: System::Void Scale_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -2406,6 +3032,39 @@ private: System::Void Solve_Click(System::Object^  sender, System::EventArgs^  e
 
 		 }
 private: System::Void upper_Click(System::Object^  sender, System::EventArgs^  e) {
+			  if(openow!=NOPE)
+			 {
+				 string sa=SYS_str_to_std(RowReduction->Text);
+				 double sca=0,ans;
+				 vector<vector<double>> tempans;
+						char thechar;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						} 
+						if(sca==0)sca=1;
+						tempans=mat->UpperTri(mat->pop(sca,thechar));
+						if(openow==ADD)
+							temps=mat->add2(temps,tempans);
+						else if(openow==SUB)
+							temps=mat->dec2(temps,tempans);
+						else if(openow==MUL)
+							temps=mat->mul2(temps,tempans);
+						else if(openow==SCA)
+							temps=mat->scale(ans,temps);
+						total->Text="NoN";
+						openow=NOPE;
+						ans_add(std_to_System_string(mat->print_out(temps)));
+			 }
+			  else
+			  {
 			 vector<vector<double>> upper;
 			 if(SYS_str_to_std(RowReduction->Text)=="")
 			 {
@@ -2422,8 +3081,42 @@ private: System::Void upper_Click(System::Object^  sender, System::EventArgs^  e
 				ans_add(std_to_System_string(mat->print_out(upper)));
 				temps.clear();
 				temps=upper;
+			  }
 		 }
 private: System::Void lower_Click(System::Object^  sender, System::EventArgs^  e) {
+			  if(openow!=NOPE)
+			 {
+				 string sa=SYS_str_to_std(RowReduction->Text);
+				 double sca=0,ans;
+				 vector<vector<double>> tempans;
+						char thechar;
+						for(int i=0;i<sa.length();i++)
+						{
+							if(!(sa.at(i)>='0'&&sa.at(i)<='9'))
+							{
+								thechar=sa.at(i);
+							}
+							else
+							{
+								sca=sca*10+(int)sa.at(i)-(int)('0');
+							}
+						} 
+						if(sca==0)sca=1;
+						tempans=mat->DownTri(mat->pop(sca,thechar));
+						if(openow==ADD)
+							temps=mat->add2(temps,tempans);
+						else if(openow==SUB)
+							temps=mat->dec2(temps,tempans);
+						else if(openow==MUL)
+							temps=mat->mul2(temps,tempans);
+						else if(openow==SCA)
+							temps=mat->scale(ans,temps);
+						total->Text="NoN";
+						openow=NOPE;
+						ans_add(std_to_System_string(mat->print_out(temps)));
+			 }
+			  else
+			  {
 			 vector<vector<double>> upper;
 			 if(SYS_str_to_std(RowReduction->Text)=="")
 			 {
@@ -2440,6 +3133,7 @@ private: System::Void lower_Click(System::Object^  sender, System::EventArgs^  e
 				ans_add(std_to_System_string(mat->print_out(upper)));
 				temps.clear();
 				temps=upper;
+			  }
 		 }
 private: System::Void orth_Click(System::Object^  sender, System::EventArgs^  e) {
 			 vector<vector<double>> matrix;
@@ -2470,7 +3164,13 @@ private: System::Void button19_Click(System::Object^  sender, System::EventArgs^
 			   string sa=SYS_str_to_std(textBox1->Text); // 讀取Textbox的string
 			 double magb,ans;
 			 char ca;
-
+			 if(sa=="")
+			 {
+				 openow=ADD;
+				 total->Text="+";
+			 }
+			 else
+			 {
 				  ca=sa.at(0);// 讀取Textbox的char
 
 				vector<double> tempa,tempans;
@@ -2517,13 +3217,21 @@ private: System::Void button19_Click(System::Object^  sender, System::EventArgs^
 				 ans_add(std_to_System_string(vec->print_out(tempans)));
 				 temp.clear();
 				 temp=tempans;
+				  total->Text="NON";
+			 }
 
 		 }
 private: System::Void button21_Click(System::Object^  sender, System::EventArgs^  e) {
 			string sa=SYS_str_to_std(textBox1->Text); // 讀取Textbox的string
 			 double magb,ans;
 			 char ca;
-
+			 if(sa=="")
+			 {
+				 openow=SUB;
+				 total->Text="-";
+			 }
+			 else
+			 {
 				  ca=sa.at(0);// 讀取Textbox的char
 				vector<double> tempa,tempans;
 				if(ca>='0'&&ca<='9')
@@ -2569,12 +3277,20 @@ private: System::Void button21_Click(System::Object^  sender, System::EventArgs^
 				 ans_add(std_to_System_string(vec->print_out(tempans)));
 				 temp.clear();
 				 temp=tempans;
+				  total->Text="NON";
+			 }
 		 }
 private: System::Void button22_Click(System::Object^  sender, System::EventArgs^  e) {
 			 string sa=SYS_str_to_std(textBox1->Text); // 讀取Textbox的string
 			 double magb,ans;
 			 char ca;
-
+			 if(sa=="")
+			 {
+				 openow=DOT;
+				 total->Text="*";
+			 }
+			 else
+			 {
 				  ca=sa.at(0);// 讀取Textbox的char
 				vector<double> tempa,tempans;
 				if(ca>='0'&&ca<='9')
@@ -2620,12 +3336,20 @@ private: System::Void button22_Click(System::Object^  sender, System::EventArgs^
 				 ans_add(std_to_System_string(vec->print_out(tempans)));
 				 temp.clear();
 				 temp=tempans;
+				  total->Text="NON";
+			 }
 		 }
 private: System::Void button23_Click(System::Object^  sender, System::EventArgs^  e) {
 			 string sa=SYS_str_to_std(textBox1->Text); // 讀取Textbox的string
 			 double magb,ans;
 			 char ca;
-
+			 if(sa=="")
+			 {
+				 openow=CRO;
+				 total->Text="x";
+			 }
+			 else
+			 {
 				  ca=sa.at(0);// 讀取Textbox的char
 				vector<double> tempa,tempans;
 				if(ca>='0'&&ca<='9')
@@ -2671,22 +3395,39 @@ private: System::Void button23_Click(System::Object^  sender, System::EventArgs^
 				 ans_add(std_to_System_string(vec->print_out(tempans)));
 				 temp.clear();
 				 temp=tempans;
+				 total->Text="NON";
+			 }
 		 }
 private: System::Void button24_Click(System::Object^  sender, System::EventArgs^  e) {
 			 string sa=SYS_str_to_std(textBox1->Text); // 讀取Textbox的string
 			 double magb,ans;
+			  if(sa=="")
+			 {
+				 openow=SCA;
+				 total->Text="k";
+			 }
+			  else
+			  {
 			 double value=atoi(sa.c_str());
 			 vector<double> tempa,tempans;
 			 tempans=dotproduct(value,temp);
 			 ans_add(std_to_System_string(vec->print_out(tempans)));
 			 temp.clear();
 			 temp=tempans;
+			 total->Text="NON";
+			  }
 		 }
 private: System::Void button29_Click(System::Object^  sender, System::EventArgs^  e) {
 			 string sa=SYS_str_to_std(martrix_input->Text);
 			double magb,ans;
 			 char ca;
-
+			 if(sa=="")
+			 {
+				 openow=ADD;
+				 total->Text="+";
+			 }
+			 else
+			 {
 				  ca=sa.at(0);// 讀取Textbox的char
 
 				vector<double> tempa,tempans;
@@ -2730,13 +3471,21 @@ private: System::Void button29_Click(System::Object^  sender, System::EventArgs^
 				 
 				}
 				 ans_add(std_to_System_string(mat->print_out(temps)));
-				 
+				 total->Text="NoN";
+			 openow=NOPE;
+			 }
 		 }
 private: System::Void button28_Click(System::Object^  sender, System::EventArgs^  e) {
 			 string sa=SYS_str_to_std(martrix_input->Text);
 			double magb,ans;
 			 char ca;
-
+			  if(sa=="")
+			 {
+				 openow=SUB;
+				 total->Text="-";
+			 }
+			  else
+			  {
 				  ca=sa.at(0);// 讀取Textbox的char
 
 				vector<double> tempa,tempans;
@@ -2780,12 +3529,21 @@ private: System::Void button28_Click(System::Object^  sender, System::EventArgs^
 				 
 				}
 				 ans_add(std_to_System_string(mat->print_out(temps)));
+				 total->Text="NoN";
+			 openow=NOPE;
+			  }
 		 }
 private: System::Void button26_Click(System::Object^  sender, System::EventArgs^  e) {
 			  string sa=SYS_str_to_std(martrix_input->Text);
 			double magb,ans;
 			 char ca;
-
+			  if(sa=="")
+			 {
+				 openow=MUL;
+				 total->Text="*";
+			 }
+			  else
+			  {
 				  ca=sa.at(0);// 讀取Textbox的char
 
 				vector<double> tempa,tempans;
@@ -2829,14 +3587,35 @@ private: System::Void button26_Click(System::Object^  sender, System::EventArgs^
 				 
 				}
 				 ans_add(std_to_System_string(mat->print_out(temps)));
+				 total->Text="NoN";
+			 openow=NOPE;
+			  }
 		 }
 private: System::Void button25_Click(System::Object^  sender, System::EventArgs^  e) {
 			 string sa=SYS_str_to_std(martrix_input->Text); // 讀取Textbox的string
 			 double magb,ans;
+			  if(sa=="")
+			 {
+				 openow=SCA;
+				 total->Text="k";
+			 }
+			  else
+			  {
 			 double value=atoi(sa.c_str());
 			 vector<double> tempa,tempans;
 			 temps=mat->scale(value,temps);
 			 ans_add(std_to_System_string(mat->print_out(temps)));
+			 total->Text="NoN";
+			 openow=NOPE;
+			  }
+		 }
+private: System::Void button27_Click(System::Object^  sender, System::EventArgs^  e) {
+			 total->Text="NoN";
+			 openow=NOPE;
+		 }
+private: System::Void button30_Click(System::Object^  sender, System::EventArgs^  e) {
+			 total->Text="NoN";
+			 openow=NOPE;
 		 }
 };
 }

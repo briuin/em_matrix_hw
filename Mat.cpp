@@ -119,6 +119,56 @@ vector<vector<double>> Mat::add(double a,unsigned char x,vector<vector<double>> 
 
 	return temp;
 }
+vector<vector<double>> Mat::add2(vector<vector<double>> v0,vector<vector<double>> ve) //加法
+{
+	vector<vector<double>> temp;
+	
+	
+
+	if (  v0.size()!=ve.size() || v0[0].size()!= ve[0].size())
+		return temp;
+
+	vec->S=v0;
+
+	for (i=0;i<v0.size();i++)
+	{
+		/*if(vec->add(a,'a'+i,ve[i]).empty())
+			return temp;*/
+		vector<double> tempv;
+		for (j=0;j<v0[i].size();j++)
+		{
+			tempv.push_back(v0[i][j]+ve[i][j]);
+		}
+		temp.push_back(tempv);
+	}
+
+	return temp;
+}
+vector<vector<double>> Mat::dec2(vector<vector<double>> v0,vector<vector<double>> ve) 
+{
+	vector<vector<double>> temp;
+	
+	
+
+	if (  v0.size()!=ve.size() || v0[0].size()!= ve[0].size())
+		return temp;
+
+	vec->S=v0;
+
+	for (i=0;i<v0.size();i++)
+	{
+		/*if(vec->add(a,'a'+i,ve[i]).empty())
+			return temp;*/
+		vector<double> tempv;
+		for (j=0;j<v0[i].size();j++)
+		{
+			tempv.push_back(ve[i][j]-v0[i][j]);
+		}
+		temp.push_back(tempv);
+	}
+
+	return temp;
+}
 vector<vector<double>> Mat::dec(double a,unsigned char x,vector<vector<double>> ve)  //減法
 {
 	vector<vector<double>> temp;
@@ -141,7 +191,36 @@ vector<vector<double>> Mat::dec(double a,unsigned char x,vector<vector<double>> 
 
 	return temp;
 }
+vector<vector<double>> Mat::mul2(vector<vector<double>> v0,vector<vector<double>> ve) 
+{
+	vector<vector<double>> temp;
+	
+	
 
+	if (  v0.size()!=ve.size() || v0[0].size()!= ve[0].size())
+		return temp;
+
+	vec->S=v0;
+
+	for (i=0;i<v0.size();i++)
+	{
+		/*if(vec->add(a,'a'+i,ve[i]).empty())
+			return temp;*/
+		vector<double> tempv;
+		for (j=0;j<v0[i].size();j++)
+		{
+			double sum=0;
+			for(k=0;k<v0[0].size();k++)
+			{
+				sum+=v0[i][k]*ve[k][j];
+			}
+			tempv.push_back(sum);
+		}
+		temp.push_back(tempv);
+	}
+
+	return temp;
+}
 vector<vector<double>> Mat::mul(double a,unsigned char x,vector<vector<double>> ve)  //乘法
 {
 	vector<vector<double>> temp;
